@@ -1,16 +1,24 @@
 version: 2.1
-orbs:
-  cypress: cypress-io/cypress@1.11.0
-workflows:
+
+jobs:
   build:
-    jobs:
-       - cypress/install:
-          cache-key: >-
-            cache-{{ arch }}-{{ .Branch }}-{{ checksum "frontend/package.json"
-            }}
-      - cypress/run:
-          yarn: true
-          cache-key: >-
-            cache-{{ arch }}-{{ .Branch }}-{{ checksum "frontend/package.json"
-            }}
-          working_directory: frontend
+    docker:
+      - image: circleci/node:12.9.1-browsers
+  
+    working_directory: ~/repo
+steps:
+      - checkout
+      
+      - restore_cache:
+        keys:
+          - v1-dependencies-{{ checksum "package.json" }}
+          - v1-dependencies-
+      
+      - run: yarn install
+   
+      - save_cache:
+        paths:
+          - node_modules
+        key: v1-dependencies-{{ checksum "package.json" }}
+    
+      - run: yarn test
