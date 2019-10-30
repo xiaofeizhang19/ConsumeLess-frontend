@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Running Cypress Tests
+OPen up cypress console for running the tests by typing `./node_modules/.bin/cypress open` in the console.
+
 ## Available Scripts
 
 In the project directory, you can run:
