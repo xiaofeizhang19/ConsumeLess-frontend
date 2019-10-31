@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { URLs } from '../constants/URLs'
 
 export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
+      email: "",
       description: "",
       category: "",
       overdueCharge: "",
@@ -27,19 +29,24 @@ export default class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.target)
-    console.log(data);
+    const data = new FormData(event.target);
+    let jsonObject = {};
+    for (const [key, value]  of data.entries()) {
+      jsonObject[key] = value;
+    }
+    console.log(jsonObject);
     
-    const url = "http://localhost:1337/myfile.html"
+    var url = URLs.newItem;
     fetch(url, {
       method: 'POST',
-      body: data,
-      mode: 'no-cors',
-    });
+      body: jsonObject,
+    })
+      .then(response => console.log(response))
+      .catch(error => console.error(error))
   }
 
   render() {
-    const { name, description, category, overdueCharge, deposit } = this.state;
+    const { name, email, description, category, overdueCharge, deposit } = this.state;
 
     return (
       <div className="container">
@@ -54,6 +61,15 @@ export default class Login extends Component {
               name="name"
               value={name}
               onChange={event => this.handleChange(event, "name")}/>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Email</Form.Label>
+            <Form.Control
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={event => this.handleChange(event, "email")}/>
           </Form.Group>
           <Form.Group>
             <Form.Label>Description</Form.Label>

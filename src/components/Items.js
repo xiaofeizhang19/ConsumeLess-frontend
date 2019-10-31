@@ -1,31 +1,28 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from "react";
+import Item from "./Item"
+import getData from "../actions/getData"
+import { URLs } from '../constants/URLs'
 
-export default class Items extends Component {
+class Items extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] }
+    this.state = { data: [] };
   }
 
-    componentDidMount() {
-      const url = 'https://pythonflaskbooks.herokuapp.com/getallusers'
-
-      axios.get(url)
-        .then(response => {
-          console.log(response)
-          this.setState({ data: response.data })
-        })
-    }
+  async componentDidMount() {
+    const data = await getData(URLs.items);
+    this.setState({ data })
+  }
 
   render() {
     return (
       <p>
-        {this.state.data.map(function(user, i){
-          return (
-            <li key={i}>Username: {user.username}<br></br>Email: {user.email}</li>
-            )
+        {this.state.data.map((item, i) => {
+          return <Item item={item} key={i} />;
         })}
       </p>
-    )
+    );
   }
 }
+
+export default Items;

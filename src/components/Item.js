@@ -5,12 +5,18 @@ class Item extends Component {
     //   super(props);
     // }
     render() {
-      const { user } = this.props;
+      const { item } = this.props;
       return (
         <li>
-          Username: {user.username}
+          Name: { item.name }
           <br />
-          Email: {user.email}
+          Category: { item.category }
+          <br />
+          Description: { item.description }
+          <br />
+          Overdue charge per day: { item.overdue_charge }
+          <br />
+          Deposit: { item.deposit }
         </li>
       );
     }

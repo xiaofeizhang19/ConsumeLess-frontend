@@ -1,4 +1,5 @@
 export const URLs = {
-    item: "https://consumerless-backend.herokuapp.com/api/item/1",
+    items: "http://consumerless-backend.herokuapp.com/api/item/index",
+    newItem: "http://consumerless-backend.herokuapp.com/api/item/new",
     users: "https://pythonflaskbooks.herokuapp.com/getallusers",
 }
