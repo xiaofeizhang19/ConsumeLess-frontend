@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom";
 import React, { Component } from "react";
 import Item from "./Item"
 import getData from "../actions/getData"
@@ -31,16 +30,5 @@ class Items extends Component {
     );
   }
 }
-
-function App() {
-  return (
-    <div className="App">
-      <Items />
-    </div>
-  );
-}
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
 
 export default Items;
