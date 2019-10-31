@@ -1,31 +1,34 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from "react";
+import Item from "./Item"
+import getData from "../actions/getData"
 
-export default class Items extends Component {
+
+
+const URLs = {
+  item: "https://consumerless-backend.herokuapp.com/api/item/1",
+  users: "https://pythonflaskbooks.herokuapp.com/getallusers",
+}
+
+class Items extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] }
+    this.state = { data: [] };
   }
 
-    componentDidMount() {
-      const url = 'https://pythonflaskbooks.herokuapp.com/getallusers'
-
-      axios.get(url)
-        .then(response => {
-          console.log(response)
-          this.setState({ data: response.data })
-        })
-    }
+  async componentDidMount() {
+    const data = await getData(URLs.users);
+    this.setState({ data })
+  }
 
   render() {
     return (
       <p>
-        {this.state.data.map(function(user, i){
-          return (
-            <li key={i}>Username: {user.username}<br></br>Email: {user.email}</li>
-            )
+        {this.state.data.map((user, i) => {
+          return <Item user={user} key={i} />;
         })}
       </p>
-    )
+    );
   }
 }
+
+export default Items;
