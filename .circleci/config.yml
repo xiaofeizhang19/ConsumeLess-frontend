@@ -17,6 +17,4 @@ jobs:
       - run: # run tests
           name: Run Test 
           command: |
-            ./cc-test-reporter before-build
             npm test
-            ./cc-test-reporter after-build --exit-code $?
