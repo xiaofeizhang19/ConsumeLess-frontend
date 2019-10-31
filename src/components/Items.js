@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import Item from "./Item"
 import getData from "../actions/getData"
-
-
-
-const URLs = {
-  item: "https://consumerless-backend.herokuapp.com/api/item/1",
-  users: "https://pythonflaskbooks.herokuapp.com/getallusers",
-}
+import { URLs } from '../constants/URLs'
 
 class Items extends Component {
   constructor(props) {
