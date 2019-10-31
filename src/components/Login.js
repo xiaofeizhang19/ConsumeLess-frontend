@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ReactDOM from "react-dom";
 
 class Login extends Component {
   constructor(props) {
@@ -10,6 +9,7 @@ class Login extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange = ({ target }, type) => {
@@ -22,50 +22,43 @@ class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    console.log(event.target)
-    const data = "hello"
+    const data = new FormData(event.target)
+    console.log(data);
+    
     const url = "http://localhost:1337/myfile.html"
     fetch(url, {
       method: 'POST',
       body: data,
-    })
+      mode: 'no-cors',
+    });
   }
 
   render() {
     const { username, password } = this.state;
     return (
-      <form>
-        <label>Username:</label>
+      <form onSubmit={this.handleSubmit}>
+        <label htmlFor="username">Username:</label>
         <input
           id="username"
+          name="username"
           value={username}
           onChange={event => this.handleChange(event, "username")}
         />
         <br />
-        <label>Password:</label>
+        <label htmlFor="password">Password:</label>
         <input
           id="password"
           type="password"
+          name="password"
           autoComplete="password"
           value={password}
           onChange={event => this.handleChange(event, "password")}
         />
         <br />
-        <input type="button" value="Log In" onClick={this.handleSubmit} />
+        <button type="submit">Log In</button>
       </form>
     );
   }
 }
-
-function App() {
-  return (
-    <div className="App">
-      <Login />
-    </div>
-  );
-}
-
-const rootElement = document.getElementById("root");
-ReactDOM.render(<App />, rootElement);
 
 export default Login;
