@@ -1,9 +1,9 @@
 import React from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// import {Route, Switch, Link} from "react-router-dom";
 import Items from './components/Items'
-import Home from './components/Home'
+import Login from './components/Login'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Router>
         <Switch>
         <Route exact path='/items' component = {Items} />
-        <Route exact path='/' component = {Home} />
+        <Route exact path='/' component = {Login} />
         </Switch>
       </Router>     
     </div>
