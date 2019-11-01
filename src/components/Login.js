@@ -40,7 +40,7 @@ export default class Login extends Component {
 
     return (
       <div className="container">
-        <h1>Welcome to ConsumeLess</h1>
+        <h1>Welcome to Consume£e$$</h1>
         <br />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
