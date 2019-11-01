@@ -5,7 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Register from './components/Register'
 import Login from './components/Login'
 import Items from './components/Items'
-import AddItem from './components/AddItem'
+import NewItem from './components/NewItem'
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <Route exact path='/' component = {Login} />
         <Route exact path='/register' component = {Register} />
         <Route exact path='/items' component = {Items} />
-        <Route exact path='/items/new' component = {AddItem} /> 
+        <Route exact path='/items/new' component = {NewItem} /> 
         </Switch>
       </Router>     
     </div>
