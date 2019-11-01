@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 
-export default class Login extends Component {
+export default class Register extends Component {
   constructor(props) {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      email: "",
+      password: "",
+      confirmPassword: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -36,11 +38,11 @@ export default class Login extends Component {
   }
 
   render() {
-    const { username, password } = this.state;
+    const { username, email, password, confirmPassword } = this.state;
 
     return (
       <div className="container">
-        <h1>Welcome to ConsumeLess</h1>
+        <h3>Register to become a member</h3>
         <br />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
@@ -53,6 +55,15 @@ export default class Login extends Component {
               onChange={event => this.handleChange(event, "username")}/>
           </Form.Group>
           <Form.Group>
+            <Form.Label>Username</Form.Label>
+            <Form.Control
+              type="email"
+              id="email"
+              name="email"
+              value={email}
+              onChange={event => this.handleChange(event, "email")}/>
+          </Form.Group>
+          <Form.Group>
             <Form.Label>Password</Form.Label>
             <Form.Control
               type="password"
@@ -62,8 +73,18 @@ export default class Login extends Component {
               value={password}
               onChange={event => this.handleChange(event, "password")}/>
           </Form.Group>
+          <Form.Group>
+            <Form.Label>Consfirm Password</Form.Label>
+            <Form.Control
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              autoComplete="password"
+              value={confirmPassword}
+              onChange={event => this.handleChange(event, "confirmPassword")}/>
+          </Form.Group>
           <Button variant="primary" type="submit">
-            Log In
+            Register
           </Button>
         </Form>
       </div>

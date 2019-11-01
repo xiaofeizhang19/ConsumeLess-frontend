@@ -1,13 +1,7 @@
 import React, { Component } from "react";
 import Item from "./Item"
 import getData from "../actions/getData"
-
-
-
-const URLs = {
-  item: "https://consumerless-backend.herokuapp.com/api/item/1",
-  users: "https://pythonflaskbooks.herokuapp.com/getallusers",
-}
+import { URLs } from '../constants/URLs'
 
 class Items extends Component {
   constructor(props) {
@@ -16,15 +10,15 @@ class Items extends Component {
   }
 
   async componentDidMount() {
-    const data = await getData(URLs.users);
+    const data = await getData(URLs.items);
     this.setState({ data })
   }
 
   render() {
     return (
       <p>
-        {this.state.data.map((user, i) => {
-          return <Item user={user} key={i} />;
+        {this.state.data.map((item, i) => {
+          return <Item item={item} key={i} />;
         })}
       </p>
     );

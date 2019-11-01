@@ -1,8 +1,23 @@
-version: 2.1
-
-  cypress: cypress-io/cypress@1
-workflows:
+version: 2
+jobs:
   build:
-    jobs:
-      - cypress/run:
-          yarn: true
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - restore_cache: # special step to restore the dependency cache
+          key: dependency-cache-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+      - run:
+          name: Setup Dependencies
+          command: npm install
+      - run:
+          name: Install Enzyme
+          command: npm i --save-dev enzyme enzyme-adapter-react-16
+      - save_cache: # special step to save the dependency cache
+          key: dependency-cache-{{ checksum "package.json" }}-{{ checksum "package-lock.json" }}
+          paths:
+            - ./node_modules
+      - run: # run tests
+          name: Run Test 
+          command: |
+            npm test
