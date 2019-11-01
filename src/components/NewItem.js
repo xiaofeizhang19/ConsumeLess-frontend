@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { URLs } from '../constants/URLs'
+import { Redirect } from 'react-router-dom';
 
 export default class NewItem extends Component {
   constructor(props) {
@@ -26,18 +27,35 @@ export default class NewItem extends Component {
     });
   }
 
+  setRedirect = () => {
+    this.setState({
+      redirect: true
+    })
+  }
+
+  renderRedirect = () => {
+    if (this.state.redirect) {
+      return <Redirect to='/items' />
+    }
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
 
     const data = new FormData(event.target);
-    
+
     fetch(URLs.newItem, {
       method: 'POST',
       body: data,
     })
-      .then(response => console.log(response))
-      .catch(error => console.error(error))
-  }
+      .then(response => response.json())
+      // console.log(response.json())
+      .then(data => {
+          // console.log(data)
+              this.setRedirect()
+              this.renderRedirect()
+            })
+          }
 
   render() {
     const { name, email, description, category, overdueCharge, deposit } = this.state;
