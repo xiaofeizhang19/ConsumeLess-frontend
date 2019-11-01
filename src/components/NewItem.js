@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { URLs } from '../constants/URLs'
 
-export default class Login extends Component {
+export default class NewItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,7 +11,7 @@ export default class Login extends Component {
       email: "",
       description: "",
       category: "",
-      overdueCharge: "",
+      overdue_charge: "",
       deposit: ""
     };
 
@@ -30,16 +30,10 @@ export default class Login extends Component {
     event.preventDefault();
 
     const data = new FormData(event.target);
-    let jsonObject = {};
-    for (const [key, value]  of data.entries()) {
-      jsonObject[key] = value;
-    }
-    console.log(jsonObject);
     
-    var url = URLs.newItem;
-    fetch(url, {
+    fetch(URLs.newItem, {
       method: 'POST',
-      body: jsonObject,
+      body: data,
     })
       .then(response => console.log(response))
       .catch(error => console.error(error))
@@ -94,10 +88,10 @@ export default class Login extends Component {
               type="number"
               step="0.01"
               min="0"
-              id="overdueCharge"
-              name="overdueCharge"
+              id="overdue_charge"
+              name="overdue_charge"
               value={overdueCharge}
-              onChange={event => this.handleChange(event, "overdueCharge")}/>
+              onChange={event => this.handleChange(event, "overdue_charge")}/>
           </Form.Group>
           <Form.Group>
             <Form.Label>Deposit</Form.Label>
