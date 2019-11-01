@@ -5,6 +5,10 @@ https://infinite-waters-48339.herokuapp.com/
 ## Running Cypress Tests
 OPen up cypress console for running the tests by typing `./node_modules/.bin/cypress open` in the console.
 
+## JEST coverage
+run the following code:
+
+npm t -- --coverage --watchAll=false
 ## Available Scripts
 
 In the project directory, you can run:
