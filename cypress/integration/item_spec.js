@@ -1,3 +1,5 @@
+// ./node_modules/.bin/cypress open
+
 describe('Items', function(){
     it('displays random items from API', function (){
         cy.request('https://pythonflaskbooks.herokuapp.com/getallusers')
