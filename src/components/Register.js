@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { URLs } from '../constants/URLs';
 
 export default class Register extends Component {
   constructor(props) {
@@ -27,14 +28,13 @@ export default class Register extends Component {
     event.preventDefault();
 
     const data = new FormData(event.target)
-    console.log(data);
     
-    const url = "http://localhost:1337/myfile.html"
-    fetch(url, {
+    fetch("http://127.0.0.1:5000/api/user/new", {
       method: 'POST',
       body: data,
-      mode: 'no-cors',
-    });
+    })
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
   }
 
   render() {
@@ -55,7 +55,7 @@ export default class Register extends Component {
               onChange={event => this.handleChange(event, "username")}/>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Username</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
               id="email"
