@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import { URLs } from '../constants/URLs';
 
 export default class Login extends Component {
   constructor(props) {
@@ -27,12 +28,12 @@ export default class Login extends Component {
     const data = new FormData(event.target)
     console.log(data);
     
-    const url = "http://localhost:1337/myfile.html"
-    fetch(url, {
+    fetch(URLs.login, {
       method: 'POST',
       body: data,
-      mode: 'no-cors',
-    });
+    })
+      .then(response => console.log(response))
+      .catch(error => console.log(error))
   }
 
   render() {
