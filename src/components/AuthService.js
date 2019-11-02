@@ -3,8 +3,7 @@ import { URLs } from '../constants/URLs';
 
 export default class AuthService {
     // Initializing important variables
-    constructor(domain) {
-        this.domain = domain || 'http://localhost:8080' // API server domain
+    constructor() {
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.login = this.login.bind(this)
         this.getProfile = this.getProfile.bind(this)
@@ -17,6 +16,7 @@ export default class AuthService {
             body: data,
         })
             .then(res => {
+            console.log(res.token)
             this.setToken(res.token) // Setting the token in localStorage
             return Promise.resolve(res);
             })
@@ -65,10 +65,7 @@ export default class AuthService {
 
     fetch(url, options) {
         // performs api calls sending the required authentication headers
-        const headers = {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        }
+        const headers = {}
 
         // Setting Authorization header
         // Authorization: Bearer xxxxxxx.xxxxxxxx.xxxxxx

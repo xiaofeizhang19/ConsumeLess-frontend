@@ -27,9 +27,8 @@ export default class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.target)
-    console.log(data);
-    
+    const data = new FormData(event.target)    
+
     this.Auth.login(data)
       .then(response => this.props.history.replace('/items'))
       .catch(error => alert(error))
