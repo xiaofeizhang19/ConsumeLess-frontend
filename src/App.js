@@ -27,7 +27,9 @@ function App() {
       <Nav.Link eventKey={2}>Register</Nav.Link>
     </LinkContainer>
       <NavDropdown title="More Links" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+        <LinkContainer to='/items/new'>
+        <NavDropdown.Item >Add New Item</NavDropdown.Item>
+        </LinkContainer>
         <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
         <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
         <NavDropdown.Divider />
