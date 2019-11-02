@@ -28,7 +28,7 @@ export default class Login extends Component {
     const data = new FormData(event.target)
     console.log(data);
     
-    fetch("http://127.0.0.1:5000/login", {
+    fetch(URLs.login, {
       method: 'POST',
       body: data,
     })

@@ -29,7 +29,7 @@ export default class Register extends Component {
 
     const data = new FormData(event.target)
     
-    fetch("http://127.0.0.1:5000/api/user/new", {
+    fetch(URLs.register, {
       method: 'POST',
       body: data,
     })
