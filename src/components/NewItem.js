@@ -13,7 +13,8 @@ export default class NewItem extends Component {
       description: "",
       category: "",
       overdue_charge: "",
-      deposit: ""
+      deposit: "",
+      redirect: false
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -51,11 +52,12 @@ export default class NewItem extends Component {
       .then(response => response.json())
       // console.log(response.json())
       .then(data => {
-          // console.log(data)
-              this.setRedirect()
-              this.renderRedirect()
-            })
-          }
+        // console.log(data)
+        this.setRedirect()
+        this.renderRedirect()
+      })
+      .catch(error => alert(error))
+  }
 
   render() {
     const { name, email, description, category, overdueCharge, deposit } = this.state;
@@ -66,7 +68,7 @@ export default class NewItem extends Component {
         <br />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Item name</Form.Label>
             <Form.Control
               type="text"
               id="name"
@@ -93,12 +95,19 @@ export default class NewItem extends Component {
           </Form.Group>
           <Form.Group>
             <Form.Label>Category</Form.Label>
-            <Form.Control
-              type="text"
+            <Form.Control as="select"
               id="category"
               name="category"
               value={category}
-              onChange={event => this.handleChange(event, "category")}/>
+              onChange={event => this.handleChange(event, "category")}>
+              <option>--Select Category--</option>
+              <option value="books">Books</option>
+              <option value="clothes">Clothes</option>
+              <option value="games">Games</option>
+              <option value="music">Music</option>
+              <option value="equitment">Garden/Building equipment</option>
+              <option value="toys">Toys</option>
+            </Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Overdue charge per day</Form.Label>
@@ -122,6 +131,7 @@ export default class NewItem extends Component {
               value={deposit}
               onChange={event => this.handleChange(event, "deposit")}/>
           </Form.Group>
+          {this.renderRedirect()}
           <Button variant="primary" type="submit">
             Submit
           </Button>
