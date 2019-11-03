@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { URLs } from '../constants/URLs';
-import AuthService from './AuthService'
+import AuthService from './AuthService';
 
 export default class Login extends Component {
   constructor(props) {
@@ -27,10 +26,10 @@ export default class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.target)    
+    const payload = new FormData(event.target)    
 
-    this.Auth.login(data)
-      .then(response => this.props.history.replace('/items'))
+    this.Auth.login(payload)
+      .then(this.props.history.replace('/items'))
       .catch(error => alert(error))
   }
 

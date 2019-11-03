@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { URLs } from '../constants/URLs';
+import AuthService from './AuthService';
 
 export default class Register extends Component {
   constructor(props) {
@@ -15,6 +15,7 @@ export default class Register extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.Auth = new AuthService();
   }
 
   handleChange = ({ target }, type) => {
@@ -27,14 +28,16 @@ export default class Register extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.target)
+    const payload = new FormData(event.target)
     
-    fetch(URLs.register, {
-      method: 'POST',
-      body: data,
-    })
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
+    this.Auth.register(payload)
+    .then(this.props.history.replace('/items'))
+    .catch(error => alert(error))
+  }
+
+  componentWillMount(){
+    if(this.Auth.loggedIn())
+        this.props.history.replace('/items');
   }
 
   render() {
@@ -74,7 +77,7 @@ export default class Register extends Component {
               onChange={event => this.handleChange(event, "password")}/>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Consfirm Password</Form.Label>
+            <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password"
               id="confirmPassword"

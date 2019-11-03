@@ -7,13 +7,27 @@ export default class AuthService {
         this.fetch = this.fetch.bind(this) // React binding stuff
         this.login = this.login.bind(this)
         this.getProfile = this.getProfile.bind(this)
+        this.register = this.register.bind(this)
     }
 
-    login(data) {
+    login(payload) {
         // Get a token from api server using the fetch api
         return this.fetch(URLs.login, {
             method: 'POST',
-            body: data,
+            body: payload,
+        })
+            .then(res => {
+            console.log(res.token)
+            this.setToken(res.token) // Setting the token in localStorage
+            return Promise.resolve(res);
+            })
+    }
+
+    register(payload) {
+
+        return this.fetch(URLs.register, {
+            method: 'POST',
+            body: payload,
         })
             .then(res => {
             console.log(res.token)
