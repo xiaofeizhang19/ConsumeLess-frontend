@@ -1,24 +1,22 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { URLs } from '../constants/URLs'
-import { Redirect } from 'react-router-dom';
+import AuthService from './AuthService';
 
 export default class NewItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
-      email: "",
       description: "",
       category: "",
       overdue_charge: "",
-      deposit: "",
-      redirect: false
+      deposit: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.Auth = new AuthService();
   }
 
   handleChange = ({ target }, type) => {
@@ -28,39 +26,18 @@ export default class NewItem extends Component {
     });
   }
 
-  setRedirect = () => {
-    this.setState({
-      redirect: true
-    })
-  }
-
-  renderRedirect = () => {
-    if (this.state.redirect) {
-      return <Redirect to='/items' />
-    }
-  }
-
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.target);
+    const payload = new FormData(event.target);
 
-    fetch(URLs.newItem, {
-      method: 'POST',
-      body: data,
-    })
-      .then(response => response.json())
-      // console.log(response.json())
-      .then(data => {
-        // console.log(data)
-        this.setRedirect()
-        this.renderRedirect()
-      })
+    this.Auth.newItem(payload)
+      .then(res => this.props.history.replace('/items'))
       .catch(error => alert(error))
   }
 
   render() {
-    const { name, email, description, category, overdueCharge, deposit } = this.state;
+    const { name, description, category, overdueCharge, deposit } = this.state;
 
     return (
       <div className="container">
@@ -75,15 +52,6 @@ export default class NewItem extends Component {
               name="name"
               value={name}
               onChange={event => this.handleChange(event, "name")}/>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={event => this.handleChange(event, "email")}/>
           </Form.Group>
           <Form.Group>
             <Form.Label>Description</Form.Label>
@@ -131,7 +99,6 @@ export default class NewItem extends Component {
               value={deposit}
               onChange={event => this.handleChange(event, "deposit")}/>
           </Form.Group>
-          {this.renderRedirect()}
           <Button variant="primary" type="submit">
             Submit
           </Button>
