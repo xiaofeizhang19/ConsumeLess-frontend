@@ -24,3 +24,6 @@ jobs:
           name: Run Test 
           command: |
             npm test
+      - run:
+          name: Deploy Master to HEROKU
+          command: git push https://heroku:HEROKU_API_KEY@git.heroku.com/infinite-waters-48339.git master
