@@ -13,7 +13,6 @@ export default class Navigation extends Component {
         return (
             <div>
                 <Navbar collapseOnSelect expand="lg" bg="info" variant="dark">
-                <div class="navbar-collapse collapse w-100 order-3 order-md-0 dual-collapse2">
   <Navbar.Brand>Consume£e$$</Navbar.Brand>
   <Navbar.Toggle aria-controls="responsive-navbar-nav" />
   <Navbar.Collapse id="responsive-navbar-nav">
@@ -40,7 +39,6 @@ export default class Navigation extends Component {
       </LinkContainer>
     </Nav>
   </Navbar.Collapse>
-  </div>  
 </Navbar>
      
         <Switch>
