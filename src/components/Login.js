@@ -1,4 +1,5 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import AuthService from './AuthService';
@@ -29,7 +30,7 @@ export default class Login extends Component {
     const payload = new FormData(event.target)    
 
     this.Auth.login(payload)
-      .then(this.props.history.replace('/items'))
+      .then(res => this.props.history.replace('/items'))
       .catch(error => alert(error))
   }
 
@@ -42,11 +43,7 @@ export default class Login extends Component {
     const { username, password } = this.state;
 
     return (
-      
-      
-
- 
-<div className="container">
+      <div className="container">
         <h1>Welcome to Consume£e$$</h1>
         <br />
         <Form onSubmit={this.handleSubmit}>
@@ -72,6 +69,11 @@ export default class Login extends Component {
           <Button variant="primary" type="submit">
             Log In
           </Button>
+          <br />
+          <br />
+          <div>
+            <p>Not a member yet? <Link to="/register">Join now</Link></p>
+          </div>
         </Form>
       </div>
 

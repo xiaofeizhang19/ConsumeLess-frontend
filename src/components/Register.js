@@ -27,11 +27,15 @@ export default class Register extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const { password, confirmPassword } = this.state
+    if (password !== confirmPassword) {
+      return alert("Password do not match!")
+    }
 
     const payload = new FormData(event.target)
     
     this.Auth.register(payload)
-    .then(this.props.history.replace('/items'))
+    .then(res => this.props.history.replace('/items'))
     .catch(error => alert(error))
   }
 
