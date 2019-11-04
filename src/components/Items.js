@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Cards from "./Cards"
+import Cards2 from "./Cards2"
 import getData from "../actions/getData"
 import { URLs } from '../constants/URLs'
 // import InfiniteCarousel from 'react-leaf-carousel';
@@ -18,7 +18,7 @@ export default class Items extends Component {
 
   render(){
     return (
-      < Cards />
+      < Cards2 />
     )
   } 
 }

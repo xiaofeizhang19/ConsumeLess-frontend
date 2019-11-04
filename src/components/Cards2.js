@@ -4,7 +4,7 @@ import getData from "../actions/getData"
 import { URLs } from '../constants/URLs'
 
 
-export default class Cards extends Component {
+export default class Cards2 extends Component {
     constructor(props) {
         super(props);
         this.state = { data: [] };
@@ -19,18 +19,18 @@ export default class Cards extends Component {
           <div>
             {this.state.data.map((item, index) => {
               return (
-                
-              <div key={index} className="col-md-6 col-lg-4">
-                <div className="card mb-4">
-                  <Card>
-                    <Card.Img src='https://www.decathlon.co.uk/media/837/8378535/big_1638914.jpg' alt =''/>
-                      <Card.Body>
-                        <Card.Title>{ item.name }</Card.Title>
-                        <Card.Title>{ item.description }</Card.Title>
-                    </Card.Body>
-                  </Card>
-                </div>
-              </div> 
+                <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src="holder.js/100px180" />
+                <Card.Body>
+                  <Card.Title>{item.name}</Card.Title>
+                  <Card.Text>
+                    Some quick example text to build on the card title and make up the bulk of
+                    the card's content.
+                  </Card.Text>
+                  
+                </Card.Body>
+              </Card>
+               
               )  
             }
           )}
