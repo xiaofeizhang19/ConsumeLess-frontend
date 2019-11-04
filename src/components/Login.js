@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { URLs } from '../constants/URLs';
+import AuthService from './AuthService';
 
 export default class Login extends Component {
   constructor(props) {
@@ -13,6 +13,7 @@ export default class Login extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.Auth = new AuthService();
   }
 
   handleChange = ({ target }, type) => {
@@ -25,22 +26,27 @@ export default class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.target)
-    console.log(data);
-    
-    fetch(URLs.login, {
-      method: 'POST',
-      body: data,
-    })
-      .then(response => console.log(response))
-      .catch(error => console.log(error))
+    const payload = new FormData(event.target)    
+
+    this.Auth.login(payload)
+      .then(this.props.history.replace('/items'))
+      .catch(error => alert(error))
+  }
+
+  componentWillMount(){
+    if(this.Auth.loggedIn())
+        this.props.history.replace('/items');
   }
 
   render() {
     const { username, password } = this.state;
 
     return (
-      <div className="container">
+      
+      
+
+ 
+<div className="container">
         <h1>Welcome to Consume£e$$</h1>
         <br />
         <Form onSubmit={this.handleSubmit}>
@@ -68,6 +74,7 @@ export default class Login extends Component {
           </Button>
         </Form>
       </div>
+
     )
   }
 }
