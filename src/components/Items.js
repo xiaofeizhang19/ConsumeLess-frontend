@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Cards from "./Cards"
 import getData from "../actions/getData"
 import { URLs } from '../constants/URLs'
-import InfiniteCarousel from 'react-leaf-carousel';
+// import InfiniteCarousel from 'react-leaf-carousel';
 
 
 export default class Items extends Component {
