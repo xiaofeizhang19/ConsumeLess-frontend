@@ -33,7 +33,7 @@ export default class Login extends Component {
       .catch(error => alert(error))
   }
 
-  componentWillMount(){
+  componentWillUnmount(){
     if(this.Auth.loggedIn())
         this.props.history.replace('/items');
   }
