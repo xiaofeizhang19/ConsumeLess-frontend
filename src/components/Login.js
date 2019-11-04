@@ -30,7 +30,7 @@ export default class Login extends Component {
     const payload = new FormData(event.target)    
 
     this.Auth.login(payload)
-      .then(this.props.history.replace('/items'))
+      .then(res => this.props.history.replace('/items'))
       .catch(error => alert(error))
   }
 
