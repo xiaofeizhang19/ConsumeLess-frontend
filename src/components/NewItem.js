@@ -9,7 +9,6 @@ export default class NewItem extends Component {
     super(props);
     this.state = {
       name: "",
-      email: "",
       description: "",
       category: "",
       overdue_charge: "",
@@ -60,7 +59,7 @@ export default class NewItem extends Component {
   }
 
   render() {
-    const { name, email, description, category, overdueCharge, deposit } = this.state;
+    const { name, description, category, overdueCharge, deposit } = this.state;
 
     return (
       <div className="container">
@@ -75,15 +74,6 @@ export default class NewItem extends Component {
               name="name"
               value={name}
               onChange={event => this.handleChange(event, "name")}/>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={event => this.handleChange(event, "email")}/>
           </Form.Group>
           <Form.Group>
             <Form.Label>Description</Form.Label>
