@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import Item from "./Item"
+import Cards from "./Cards"
 import getData from "../actions/getData"
 import { URLs } from '../constants/URLs'
 import InfiniteCarousel from 'react-leaf-carousel';
-import Card from 'react-bootstrap/Card'
+
 
 export default class Items extends Component {
   constructor(props) {
@@ -18,20 +18,47 @@ export default class Items extends Component {
 
   render(){
     return (
-
-          <div className="container">
-      <div className="card-body">
-      {this.state.data.map((item, i) => {
-       return <Card style={{ width: '18rem' }}>
-       <Card.Body><Item item={item} key={i} />;
-       </Card.Body>
-       </Card>
-      })}
-      </div>
-      </div>
-         
-      
+      < Cards />
     )
   } 
 }
 
+
+
+// <InfiniteCarousel
+// breakpoints={[
+//   {
+//     breakpoint: 500,
+//     settings: {
+//       slidesToShow: 2,
+//       slidesToScroll: 2,
+//     },
+//   },
+//   {
+//     breakpoint: 768,
+//     settings: {
+//       slidesToShow: 3,
+//       slidesToScroll: 3,
+//     },
+//   },
+// ]}
+// dots={true}
+// showSides={true}
+// sidesOpacity={.5}
+// sideSize={.1}
+// slidesToScroll={4}
+// slidesToShow={4}
+// scrollOnDevice={true}
+// >
+// <div>
+//   <ul>
+//   <li>
+//     {Cards.each(function(item){
+//          item
+//     })}
+//     </li>
+//   </ul>
+// </div>
+
+
+// </InfiniteCarousel>
