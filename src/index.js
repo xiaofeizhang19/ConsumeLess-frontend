@@ -11,7 +11,6 @@ import * as serviceWorker from './serviceWorker';
 
 const routing = (
   <Router>
-    <Navigation />
       <Switch>
         <Route exact path='/' component = {Login} />
         <Route exact path='/register' component = {Register} />
