@@ -2,14 +2,14 @@ import React from 'react';
 import '../App.css';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import {useHistory} from 'react-router-dom';
 import AuthService from './AuthService';
-import FormControl from '@material-ui/core/FormControl'
+import { useState } from 'react';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 const CssTextField = withStyles({
   root: {
@@ -25,7 +25,7 @@ const CssTextField = withStyles({
       }
     },
   },
-})(TextField);
+})(TextValidator);
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -72,6 +72,17 @@ const useStyles = makeStyles(theme => ({
     let classes = useStyles();
     let authService = new AuthService()
 
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+
+    const handleUserNameInput = event => {
+      setUsername(event.target.value);
+    };
+
+    const handlePasswordInput = event => {
+      setPassword(event.target.value);
+    };
+
     const handleSubmit = (event) => {
       event.preventDefault();
       
@@ -86,8 +97,8 @@ const useStyles = makeStyles(theme => ({
       <Container component="main" maxWidth="xs">
       <CssBaseline />
       <div className={classes.paper}>
-          <img src={ require('../logo-with-name.svg')} />
-        <form className={classes.form} noValidate onSubmit={handleSubmit}>
+        <img src={ require('../logo-with-name.svg')} />
+        <ValidatorForm className={classes.form} noValidate onSubmit={handleSubmit}>
           <CssTextField 
             className={classes.inputz}
             variant="outlined"
@@ -97,7 +108,11 @@ const useStyles = makeStyles(theme => ({
             id="username"
             label="Username"
             name="username"
+            value={username}
+            validators={['required']}
+            errorMessages={['Username is required']}
             autoFocus
+            onChange={handleUserNameInput}
           />
           <CssTextField
             variant="outlined"
@@ -108,6 +123,10 @@ const useStyles = makeStyles(theme => ({
             label="Password"
             type="password"
             id="password"
+            value={password}
+            validators={['required']}
+            errorMessages={['Password is required']}
+            onChange={handlePasswordInput}
           />
           <Button
             type="submit"
@@ -125,7 +144,7 @@ const useStyles = makeStyles(theme => ({
               </Link>
             </Grid>
           </Grid>
-        </form>
+        </ValidatorForm>
       </div>
     </Container>
     </div>
