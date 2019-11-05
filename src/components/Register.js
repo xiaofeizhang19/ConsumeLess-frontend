@@ -1,100 +1,232 @@
-import React, { Component } from 'react'
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import React from 'react';
+import './App.css';
 import AuthService from './AuthService';
+import Button from '@material-ui/core/Button';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Link from '@material-ui/core/Link';
+import Grid from '@material-ui/core/Grid';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
+import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
-export default class Register extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: "",
-      email: "",
-      password: "",
-      confirmPassword: ""
+const CssTextField = withStyles({
+  root: {
+    '& label.Mui-focused': {
+      color: '#659c35',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#659c35'
+    },
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        borderColor: '#659c35'
+      }
+    },
+  },
+})(TextValidator);
+
+const useStyles = makeStyles(theme => ({
+  '@global': {
+    body: {
+      backgroundColor: theme.palette.common.white,
+    },
+  },
+  paper: {
+    marginTop: theme.spacing(8),
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: '100%', // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  input: {
+    color: '#659c35',
+    borderBottomColor: '#659c35',
+    borderColor: '#659c35'
+  },
+  submit: {
+    '&:hover': {
+      backgroundColor: '#45721D'
+    },
+    backgroundColor: '#659c35',
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
+
+export default function Register() {
+
+
+    let history = useHistory();
+    let classes = useStyles();
+    let authService = new AuthService()
+  
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [email, setEmail] = useState('');
+    const [confirmpassword, setPasswordConfirmation] = useState('');
+  
+    const [open, setOpen] = React.useState(false);
+  
+    const handleClickOpen = () => {
+      setOpen(true);
+    };
+  
+    const handleClose = () => {
+      setOpen(false);
+    }
+  
+    const handleUserNameInput = event => {
+      setUsername(event.target.value);
+    };
+  
+    const handlePasswordInput = event => {
+      setPassword(event.target.value);
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.Auth = new AuthService();
-  }
+    const handleEmailInput = event => {
+      setEmail(event.target.value);
+    };
+  
+    const handlePasswordConfirm = event => {
+      setPasswordConfirmation(event.target.value);
+    };
 
-  handleChange = ({ target }, type) => {
-    this.setState({
-      ...this.state,
-      [type]: target.value
+    useEffect(() => {
+      ValidatorForm.addValidationRule('isPasswordMatch', (value) => {
+        if (value !== password) {
+            return false;
+        }
+        return () => {
+          ValidatorForm.removeValidationRule('isPasswordMatch');
+        }
+      })
     });
-  }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { password, confirmPassword } = this.state
-    if (password !== confirmPassword) {
-      return alert("Password do not match!")
-    }
-
-    const payload = new FormData(event.target)
-    
-    this.Auth.register(payload)
-    .then(res => this.props.history.replace('/items'))
-    .catch(error => alert(error))
-  }
-
-  componentWillUnmount(){
-    if(this.Auth.loggedIn())
-        this.props.history.replace('/items');
-  }
-
-  render() {
-    const { username, email, password, confirmPassword } = this.state;
+  
+    const handleSubmit = (event) => {
+      event.preventDefault();
+  
+      let payload = new FormData(event.target)
+  
+      authService.register(payload)
+        .then(res => history.replace('/items'))
+        .catch(error => handleClickOpen())
+    };
 
     return (
-      <div className="container">
-        <h3>Register to become a member</h3>
-        <br />
-        <Form onSubmit={this.handleSubmit}>
-          <Form.Group>
-            <Form.Label>Username</Form.Label>
-            <Form.Control
-              type="text"
-              id="username"
-              name="username"
-              value={username}
-              onChange={event => this.handleChange(event, "username")}/>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={event => this.handleChange(event, "email")}/>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Password</Form.Label>
-            <Form.Control
-              type="password"
-              id="password"
-              name="password"
-              autoComplete="password"
-              value={password}
-              onChange={event => this.handleChange(event, "password")}/>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Confirm Password</Form.Label>
-            <Form.Control
-              type="password"
-              id="confirmPassword"
-              name="confirmPassword"
-              autoComplete="password"
-              value={confirmPassword}
-              onChange={event => this.handleChange(event, "confirmPassword")}/>
-          </Form.Group>
-          <Button variant="primary" type="submit">
-            Register
-          </Button>
-        </Form>
+      <div className="App">
+        <Container component="main" maxWidth="xs">
+          <CssBaseline />
+          <div className={classes.paper}>
+            <img src={require('../logo-with-name.svg')} />
+            <ValidatorForm className={classes.form} noValidate onSubmit={handleSubmit}>
+              <CssTextField
+                className={classes.inputz}
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                id="username"
+                label="username"
+                name="username"
+                value={username}
+                validators={['required']}
+                errorMessages={['Username is required']}
+                autoFocus
+                onChange={handleUserNameInput}
+              />
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="email"
+                label="email"
+                type="email"
+                id="email"
+                value={email}
+                validators={['required','isEmail']}
+                errorMessages={['Email is required','Invalid email']}
+                onChange={handleEmailInput}
+              />
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                label="password"
+                type="password"
+                id="password"
+                value={password}
+                validators={['required']}
+                errorMessages={['Password is required']}
+                onChange={handlePasswordInput}
+              />
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                required
+                fullWidth
+                name="confirmpassword"
+                label="confirm password"
+                type="password"
+                id="confirmpassword"
+                value={confirmpassword}
+                validators={['isPasswordMatch', 'required']}
+                errorMessages={['Password mismatch','Confirmation is required']}
+                onChange={handlePasswordConfirm}
+              />
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                className={classes.submit}
+              >
+                Register
+            </Button>
+              <Grid container>
+                <Grid item>
+                  <Link href="/login" variant="body2">
+                    {"Already have an account? Sign In"}
+                  </Link>
+                </Grid>
+              </Grid>
+            </ValidatorForm>
+          </div>
+        </Container>
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{"Incorrect username or password"}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              All the fields is required. Please double-check and try again.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Ok
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
-    )
+    );
   }
-}

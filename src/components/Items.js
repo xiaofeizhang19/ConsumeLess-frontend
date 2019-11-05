@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Navigation from "./Navigation"
 import Cards from "./Cards"
 import getData from "../actions/getData"
 import { URLs } from '../constants/URLs'
@@ -18,9 +19,11 @@ export default class Items extends Component {
 
   render(){
     return (
+      <div><Navigation />
       <div className = "container">
       <h1>Items</h1>
       < Cards />
+      </div>
       </div>
     )
   }

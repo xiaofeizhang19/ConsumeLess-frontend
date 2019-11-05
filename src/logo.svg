@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="98px" height="102px" viewBox="0 0 98 102" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>forest</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="forest">
+            <circle id="Oval" fill="#88C057" fill-rule="nonzero" cx="41" cy="58" r="24"></circle>
+            <path d="M74.2074213,11 L61.751539,47.6478167 C64.0896033,51.369175 65.4627223,55.7515271 65.4627223,60.4606418 C65.4627223,69.1226493 60.876881,76.7035397 54,81 L74.2074213,81 L98,81 L74.2074213,11 Z" id="Path" fill="#659C35" fill-rule="nonzero"></path>
+            <path d="M29.0416667,11 C31.7692222,11 34,13.4754783 34,16.5 L34,16.5 C34,19.5245217 31.7692222,22 29.0416667,22 L7.79166667,22 L7.08333333,22 C3.17144444,22 0,18.481913 0,14.1431304 C0,9.80434783 3.17144444,6.28626087 7.08333333,6.28626087 C7.08333333,6.28626087 10.3586667,0 18.4166667,0 C23.4637778,0 28.3333333,2.84852174 28.3333333,11 L29.0416667,11 Z" id="Path" fill="#C6E2F7" fill-rule="nonzero"></path>
+            <line x1="36" y1="68" x2="42" y2="74" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="47" y1="68" x2="41" y2="74" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="40.5" y1="75" x2="40.5" y2="101" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="69" y1="68" x2="75" y2="74" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="81" y1="68" x2="75" y2="74" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="74.5" y1="75" x2="74.5" y2="101" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+        </g>
+    </g>
+</svg>
