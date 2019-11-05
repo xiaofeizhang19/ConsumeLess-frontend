@@ -9,11 +9,11 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Items from './components/Items';
 import NewItem from './components/NewItem';
-<<<<<<< HEAD
+
 import Map from './components/Map';
-=======
+
 import Categories from './components/Categories';
->>>>>>> 6af960d92cc806f7d3daf3e1944808ac378b6529
+
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
@@ -25,13 +25,13 @@ const routing = (
         <Route exact path='/register' component = {Register} />
         <Route exact path='/profile' component = {Profile} />
         <Route exact path='/items' component = {Items} />
-        <Route exact path='/items/new' component = {NewItem} /> 
-<<<<<<< HEAD
-        <Route exact path='/map' component = {Map} /> 
+        <Route exact path='/items/new' component = {NewItem} />
+
+        <Route exact path='/map' component = {Map} />
 =======
-        <Route exact path='/categories' component = {Categories} /> 
->>>>>>> 6af960d92cc806f7d3daf3e1944808ac378b6529
-      </Switch> 
+        <Route exact path='/categories' component = {Categories} />
+
+      </Switch>
   </Router>
 )
 
