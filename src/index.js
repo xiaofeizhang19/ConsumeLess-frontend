@@ -25,9 +25,9 @@ const routing = (
         <Route exact path='/login' component = {Login} />
         <Route exact path='/register' component = {Register} />
         <Route exact path='/profile' component = {Profile} />
-        <Route exact path='/items/new' component = {NewItem} /> 
+        <Route exact path='/items/new' component = {NewItem} />
         <Route exact path='/items' component = {Items} />
-        <Route exact path='/item/43' component = {Item} />
+        <Route exact path='/item/:id' component = {Item} />
         {/* <Route exact path='/items/new' component = {NewItem} /> */}
         <Route exact path='/map' component = {Map} />
         <Route exact path='/categories' component = {Categories} />

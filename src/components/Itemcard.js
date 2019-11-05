@@ -13,10 +13,10 @@ class Itemcard extends Component {
               <Card.Title>{ itemcard.description }</Card.Title>
               <Card.Title>{ itemcard.category }</Card.Title>
               <Card.Title>{ itemcard.id }</Card.Title>
-              <Button href= {`/item/43`} variant="dark">View Item</Button>
+              <Button href= {`/item/${itemcard.id}`} variant="dark">View Item</Button>
             </Card.Body>
           </Card>
-      )  
+      )
     }
   }
 

@@ -1,7 +1,7 @@
 export const URLs = {
-    items: "http://consumerless-backend.herokuapp.com/api/item/index",
-    item: "http://consumerless-backend.herokuapp.com/api/item/43",
-    newItem: "http://consumerless-backend.herokuapp.com/api/item/new",
-    login: "http://consumerless-backend.herokuapp.com/login",
-    register: "http://consumerless-backend.herokuapp.com/api/user/new"
+    items: "http://localhost:5000/api/item/index",
+    item: "http://localhost:5000/api/item/",
+    newItem: "http://localhost:5000/api/item/new",
+    login: "http://localhost:5000/login",
+    register: "http://localhost:5000/api/user/new"
 }

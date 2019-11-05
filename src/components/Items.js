@@ -15,9 +15,12 @@ class Items extends Component {
   async componentDidMount() {
     const items = await getData(URLs.items);
     this.setState({ items })
+    console.log("me too")
   }
 
-  render() {
+  render(){
+    console.log(this.state.items)
+    console.log("i'm running 1")
     return (
       <div className="col-md-6 col-lg-4">
         {this.state.items.map((itemcard, i) => {
