@@ -1,9 +1,18 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import AuthService from './AuthService';
+const Auth = new AuthService();
 
 export default class Navigation extends Component {
+  
+  
+  handleLogout() {
+    Auth.logout();
+    this.props.history.replace('./login');
+  }
+
   render() {
     return (
       <div>
@@ -21,14 +30,14 @@ export default class Navigation extends Component {
                   <NavDropdown.Item href="/items/new">Add New Item</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">Log out</NavDropdown.Item>
+                  <NavDropdown.Item onClick={this.handleLogout}>Log out</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
             <Nav>
               <LinkContainer to="/register">
                 <Nav.Link eventKey={2}>Register</Nav.Link>
               </LinkContainer>
-              <LinkContainer to="/">
+              <LinkContainer to="/login">
               <Nav.Link eventKey={3}>Login</Nav.Link>
               </LinkContainer>
             </Nav>
