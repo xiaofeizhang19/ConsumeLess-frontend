@@ -15,12 +15,13 @@ export default class Profile extends Component {
     this.Auth = new AuthService();
   }
 
-  // async componentDidMount() {
-  //   const token = this.Auth.getProfile();
-  //   const user = await getData(URLs.user + `?token=${token}`);
-  //   // console.log(user);
-  //   this.setState({ user })
-  // }
+  async componentDidMount() {
+    const userId = this.Auth.getProfile().user_id;
+    console.log(userId);
+    const user = await getData(URLs.user + `/api/user/${userId}`);
+    console.log(user);
+    this.setState({ user })
+  }
 
   render() {
     return (
