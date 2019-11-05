@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
 import AuthService from './AuthService';
-// import getData from "../actions/getData"
-// import { URLs } from '../constants/URLs'
+import getData from "../actions/getData"
+import { URLs } from '../constants/URLs'
 
 export default class Profile extends Component {
   constructor(props) {
