@@ -1,6 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import AuthService from './AuthService';
 
 export default class Login extends Component {
   constructor(props) {
@@ -12,6 +14,7 @@ export default class Login extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.Auth = new AuthService();
   }
 
   handleChange = ({ target }, type) => {
@@ -24,15 +27,17 @@ export default class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.target)
-    console.log(data);
-    
-    const url = "http://localhost:1337/myfile.html"
-    fetch(url, {
-      method: 'POST',
-      body: data,
-      mode: 'no-cors',
-    });
+    const payload = new FormData(event.target)    
+
+    this.Auth.login(payload)
+      .then(res => this.props.history.replace('/items'))
+      .catch(error => alert(error))
+  }
+
+  componentDidMount(){
+    if(this.Auth.loggedIn()) {
+      this.props.history.replace('/items');
+    }
   }
 
   render() {
@@ -40,7 +45,7 @@ export default class Login extends Component {
 
     return (
       <div className="container">
-        <h1>Welcome to Consume£e$$</h1>
+        <h2>Welcome to Consume£e$$</h2>
         <br />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
@@ -65,8 +70,14 @@ export default class Login extends Component {
           <Button variant="primary" type="submit">
             Log In
           </Button>
+          <br />
+          <br />
+          <div>
+            <p>Not a member yet? <Link to="/register">Join now</Link></p>
+          </div>
         </Form>
       </div>
+
     )
   }
 }

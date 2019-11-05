@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import { URLs } from '../constants/URLs'
+import AuthService from './AuthService';
 
 export default class NewItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
       name: "",
-      email: "",
       description: "",
       category: "",
       overdue_charge: "",
@@ -17,6 +16,7 @@ export default class NewItem extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.Auth = new AuthService();
   }
 
   handleChange = ({ target }, type) => {
@@ -29,18 +29,15 @@ export default class NewItem extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
 
-    const data = new FormData(event.target);
-    
-    fetch(URLs.newItem, {
-      method: 'POST',
-      body: data,
-    })
-      .then(response => console.log(response))
-      .catch(error => console.error(error))
+    const payload = new FormData(event.target);
+
+    this.Auth.newItem(payload)
+      .then(res => this.props.history.replace('/items'))
+      .catch(error => alert(error))
   }
 
   render() {
-    const { name, email, description, category, overdueCharge, deposit } = this.state;
+    const { name, description, category, overdueCharge, deposit } = this.state;
 
     return (
       <div className="container">
@@ -48,22 +45,13 @@ export default class NewItem extends Component {
         <br />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
-            <Form.Label>Name</Form.Label>
+            <Form.Label>Item name</Form.Label>
             <Form.Control
               type="text"
               id="name"
               name="name"
               value={name}
               onChange={event => this.handleChange(event, "name")}/>
-          </Form.Group>
-          <Form.Group>
-            <Form.Label>Email</Form.Label>
-            <Form.Control
-              type="email"
-              id="email"
-              name="email"
-              value={email}
-              onChange={event => this.handleChange(event, "email")}/>
           </Form.Group>
           <Form.Group>
             <Form.Label>Description</Form.Label>
@@ -75,12 +63,19 @@ export default class NewItem extends Component {
           </Form.Group>
           <Form.Group>
             <Form.Label>Category</Form.Label>
-            <Form.Control
-              type="text"
+            <Form.Control as="select"
               id="category"
               name="category"
               value={category}
-              onChange={event => this.handleChange(event, "category")}/>
+              onChange={event => this.handleChange(event, "category")}>
+              <option>--Select Category--</option>
+              <option value="books">Books</option>
+              <option value="clothes">Clothes</option>
+              <option value="games">Games</option>
+              <option value="music">Music</option>
+              <option value="equitment">Garden/Building equipment</option>
+              <option value="toys">Toys</option>
+            </Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Overdue charge per day</Form.Label>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import AuthService from './AuthService';
 
 export default class Register extends Component {
   constructor(props) {
@@ -14,6 +15,7 @@ export default class Register extends Component {
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.Auth = new AuthService();
   }
 
   handleChange = ({ target }, type) => {
@@ -25,16 +27,21 @@ export default class Register extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
+    const { password, confirmPassword } = this.state
+    if (password !== confirmPassword) {
+      return alert("Password do not match!")
+    }
 
-    const data = new FormData(event.target)
-    console.log(data);
+    const payload = new FormData(event.target)
     
-    const url = "http://localhost:1337/myfile.html"
-    fetch(url, {
-      method: 'POST',
-      body: data,
-      mode: 'no-cors',
-    });
+    this.Auth.register(payload)
+    .then(res => this.props.history.replace('/items'))
+    .catch(error => alert(error))
+  }
+
+  componentWillUnmount(){
+    if(this.Auth.loggedIn())
+        this.props.history.replace('/items');
   }
 
   render() {
@@ -55,7 +62,7 @@ export default class Register extends Component {
               onChange={event => this.handleChange(event, "username")}/>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Username</Form.Label>
+            <Form.Label>Email</Form.Label>
             <Form.Control
               type="email"
               id="email"
@@ -74,7 +81,7 @@ export default class Register extends Component {
               onChange={event => this.handleChange(event, "password")}/>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Consfirm Password</Form.Label>
+            <Form.Label>Confirm Password</Form.Label>
             <Form.Control
               type="password"
               id="confirmPassword"
