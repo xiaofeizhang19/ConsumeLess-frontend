@@ -52,12 +52,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%', // Fix IE 11 issue.
     marginTop: theme.spacing(1),
   },
-  inputz: {
-    '&$focused': {
-      color: '#659c35',
-      borderBottomColor: '#659c35',
-      borderColor: '#659c35',
-    },
+  input: {
     color: '#659c35',
     borderBottomColor: '#659c35',
     borderColor: '#659c35'
