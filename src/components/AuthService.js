@@ -24,7 +24,6 @@ export default class AuthService {
     }
 
     register(payload) {
-
         return this.fetch(URLs.register, {
             method: 'POST',
             body: payload,
@@ -32,6 +31,16 @@ export default class AuthService {
             .then(res => {
             console.log(res.token)
             this.setToken(res.token) // Setting the token in localStorage
+            return Promise.resolve(res);
+            })
+    }
+    
+    newItem(payload) {
+        return this.fetch(URLs.newItem + `?token=${this.getToken()}`, {
+            method: 'POST',
+            body: payload,
+        })
+            .then(res => {
             return Promise.resolve(res);
             })
     }

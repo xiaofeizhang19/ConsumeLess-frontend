@@ -15,8 +15,7 @@ jest.mock('react-router-dom', () => ({
 }));
 
 describe ('Login',() => {
-
-
+    
     let wrapper = shallow(<Login />);
 
     it('should render a div element', () => {
