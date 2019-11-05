@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import Item from "./Item"
 import getData from "../actions/getData"
-import { URLs } from '../constants/URLs'
+import { URLs } from '../constants/URLs';
+import Carousel from './Carousel';
+
 
 class Items extends Component {
   constructor(props) {
@@ -14,15 +15,10 @@ class Items extends Component {
     this.setState({ data })
   }
 
-  render() {
+  render(){
     return (
-      <p>
-        {this.state.data.map((item, i) => {
-          return <Item item={item} key={i} />;
-        })}
-      </p>
-    );
-  }
+      < Carousel/>
+    )}
 }
-
+    
 export default Items;
