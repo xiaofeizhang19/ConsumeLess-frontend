@@ -1,26 +1,31 @@
 import React, { Component } from "react";
-import Item from "./Item"
+import { Route } from 'react-router-dom';
+import Itemcard from "./Itemcard"
 import getData from "../actions/getData"
 import { URLs } from '../constants/URLs'
 
 class Items extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = {
+      items: []
+    };
   }
 
   async componentDidMount() {
-    const data = await getData(URLs.items);
-    this.setState({ data })
+    const items = await getData(URLs.items);
+    this.setState({ items })
   }
 
   render() {
     return (
-      <p>
-        {this.state.data.map((item, i) => {
-          return <Item item={item} key={i} />;
+      <div className="col-md-6 col-lg-4">
+        {this.state.items.map((itemcard, i) => {
+          return (
+            <Itemcard itemcard={itemcard} key={i} />
+          )
         })}
-      </p>
+        </div>
     );
   }
 }

@@ -8,6 +8,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Items from './components/Items';
+import Item from './components/Item';
 import NewItem from './components/NewItem';
 
 import Map from './components/Map';
@@ -24,8 +25,10 @@ const routing = (
         <Route exact path='/login' component = {Login} />
         <Route exact path='/register' component = {Register} />
         <Route exact path='/profile' component = {Profile} />
+        <Route exact path='/items/new' component = {NewItem} /> 
         <Route exact path='/items' component = {Items} />
-        <Route exact path='/items/new' component = {NewItem} />
+        <Route exact path='/item/43' component = {Item} />
+        {/* <Route exact path='/items/new' component = {NewItem} /> */}
         <Route exact path='/map' component = {Map} />
         <Route exact path='/categories' component = {Categories} />
 
