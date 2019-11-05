@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import Cards from "./Cards"
+import Item from "./Item"
 import getData from "../actions/getData"
 import { URLs } from '../constants/URLs'
-// import InfiniteCarousel from 'react-leaf-carousel';
 
-
-export default class Items extends Component {
+class Items extends Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
@@ -16,15 +14,15 @@ export default class Items extends Component {
     this.setState({ data })
   }
 
-  render(){
+  render() {
     return (
-      <div className = "container">
-      <h1>Items</h1>
-      < Cards />
-      </div>
-    )
-  } 
+      <p>
+        {this.state.data.map((item, i) => {
+          return <Item item={item} key={i} />;
+        })}
+      </p>
+    );
+  }
 }
 
-
-
+export default Items;
