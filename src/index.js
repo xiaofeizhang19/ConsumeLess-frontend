@@ -3,13 +3,17 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import './index.css';
 import Navigation from './components/Navigation';
-import App from './components/App';
+// import App from './components/App';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
 import Items from './components/Items';
 import NewItem from './components/NewItem';
+<<<<<<< HEAD
 import Map from './components/Map';
+=======
+import Categories from './components/Categories';
+>>>>>>> 6af960d92cc806f7d3daf3e1944808ac378b6529
 import * as serviceWorker from './serviceWorker';
 
 const routing = (
@@ -22,7 +26,11 @@ const routing = (
         <Route exact path='/profile' component = {Profile} />
         <Route exact path='/items' component = {Items} />
         <Route exact path='/items/new' component = {NewItem} /> 
+<<<<<<< HEAD
         <Route exact path='/map' component = {Map} /> 
+=======
+        <Route exact path='/categories' component = {Categories} /> 
+>>>>>>> 6af960d92cc806f7d3daf3e1944808ac378b6529
       </Switch> 
   </Router>
 )
