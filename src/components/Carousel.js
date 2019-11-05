@@ -38,7 +38,7 @@ export default class Carousel extends Component {
   <Card.Header bg="info"> <Card.Title>Books</Card.Title></Card.Header>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
     <Card.Text className="text-center">
-      Find your favourite books here, anything from fiction to non-fiction
+      Find your favourite books here, anything from fiction all the way to non-fiction
     </Card.Text>
     <Card.Link href="#">Card Link</Card.Link>
     <Card.Link href="#">Another Link</Card.Link>
@@ -62,7 +62,7 @@ export default class Carousel extends Component {
   <Card.Header bg="info"> <Card.Title>Games</Card.Title></Card.Header>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1500995617113-cf789362a3e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
     <Card.Text className="text-center">
-      Find your favourite books here, anything from fiction to non-fiction
+      The outdoors is overrated. Keep yourself indoors away from the bugs with these board games.
     </Card.Text>
     <Card.Link href="#">Card Link</Card.Link>
     <Card.Link href="#">Another Link</Card.Link>
