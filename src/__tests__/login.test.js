@@ -11,7 +11,7 @@ describe('Login component', () => {
       
     it('check the title', () => {
         const wrapper = mount(<Login />);
-        const data = wrapper.find('h1').text();
+        const data = wrapper.find('h2').text();
         expect(data).equal('Welcome to Consume£e$$');
     }); 
   
