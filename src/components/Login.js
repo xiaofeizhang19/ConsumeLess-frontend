@@ -7,6 +7,9 @@ import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import {useHistory} from 'react-router-dom';
+import AuthService from './AuthService';
+import FormControl from '@material-ui/core/FormControl'
 
 const CssTextField = withStyles({
   root: {
@@ -63,8 +66,20 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-function Login() {
-  const classes = useStyles();
+  export default function Login() {
+
+    let history = useHistory();
+    let classes = useStyles();
+    let authService = new AuthService()
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      
+      let payload = new FormData(event.target)    
+      
+      authService.login(payload)
+        .then(res => history.replace('/items'))
+    };
 
   return (
     <div className="App">
@@ -72,17 +87,16 @@ function Login() {
       <CssBaseline />
       <div className={classes.paper}>
           <img src={ require('../logo-with-name.svg')} />
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={handleSubmit}>
           <CssTextField 
             className={classes.inputz}
             variant="outlined"
             margin="normal"
             required
             fullWidth
-            id="email"
-            label="Email Address"
-            name="email"
-            autoComplete="email"
+            id="username"
+            label="Username"
+            name="username"
             autoFocus
           />
           <CssTextField
@@ -94,7 +108,6 @@ function Login() {
             label="Password"
             type="password"
             id="password"
-            autoComplete="current-password"
           />
           <Button
             type="submit"
@@ -118,5 +131,3 @@ function Login() {
     </div>
   );
 }
-
-export default Login;
