@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation"
-import Cards from "./Cards"
-import getData from "../actions/getData"
-import { URLs } from '../constants/URLs'
-import Navigation from './Navigation';
+import Navigation from "./Navigation";
+import Cards from "./Cards";
+import getData from "../actions/getData";
+import { URLs } from '../constants/URLs';
 // import InfiniteCarousel from 'react-leaf-carousel';
 
 
