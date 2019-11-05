@@ -44,7 +44,7 @@ export default class Login extends Component {
 
     return (
       <div className="container">
-        <h1>Welcome to Consume£e$$</h1>
+        <h2q>Welcome to Consume£e$$</h2>
         <br />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
