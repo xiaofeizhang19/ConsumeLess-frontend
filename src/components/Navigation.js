@@ -23,7 +23,7 @@ export default class Navigation extends Component {
                   <NavDropdown.Item href="/items/new">Add New Item</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={Auth.logout()} href="/">Log out</NavDropdown.Item>
+                  <NavDropdown.Item href="/">Log out</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
             <Nav>
