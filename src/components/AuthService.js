@@ -36,7 +36,6 @@ export default class AuthService {
     }
     
     newItem(payload) {
-        console.log(this.getToken())
         return this.fetch(URLs.newItem + `?token=${this.getToken()}`, {
             method: 'POST',
             body: payload,

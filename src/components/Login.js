@@ -34,9 +34,10 @@ export default class Login extends Component {
       .catch(error => alert(error))
   }
 
-  componentWillUnmount(){
-    if(this.Auth.loggedIn())
-        this.props.history.replace('/items');
+  componentDidMount(){
+    if(this.Auth.loggedIn()) {
+      this.props.history.replace('/items');
+    }
   }
 
   render() {
@@ -44,7 +45,7 @@ export default class Login extends Component {
 
     return (
       <div className="container">
-        <h1>Welcome to Consume£e$$</h1>
+        <h2>Welcome to Consume£e$$</h2>
         <br />
         <Form onSubmit={this.handleSubmit}>
           <Form.Group>
