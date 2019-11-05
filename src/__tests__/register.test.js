@@ -17,7 +17,7 @@ describe ('Login',() => {
     let wrapper = shallow(<Register />);
 
     it('should render a div element', () => {
-        expect(wrapper.find('div').length).toEqual(1);
+        expect(wrapper.find('div').length).toEqual(2);
     });
 
 });
