@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Item from "./Item";
 import getData from "../actions/getData"
 import { URLs } from '../constants/URLs';
 import Carousel from './Carousel';

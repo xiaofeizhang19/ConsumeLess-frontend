@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import InfiniteCarousel from 'react-leaf-carousel';
 import Card from 'react-bootstrap/Card'
+import { LinkContainer } from 'react-router-bootstrap';
 
 export default class Carousel extends Component {
     render() {
@@ -40,8 +41,9 @@ export default class Carousel extends Component {
     <Card.Text className="text-center">
       Find your favourite books here, anything from fiction all the way to non-fiction
     </Card.Text>
-    <Card.Link href="#">Card Link</Card.Link>
-    <Card.Link href="#">Another Link</Card.Link>
+    <LinkContainer to="/categories/books">
+        <Card.Link >View Available Books</Card.Link>
+    </LinkContainer>
   </Card.Body>
 </Card>
       </div>
@@ -52,8 +54,9 @@ export default class Carousel extends Component {
     <Card.Text className="text-center">
       Still wearing that GAP jumper from 2006? Stop embarrasing yourself here
     </Card.Text>
-    <Card.Link href="#">Card Link</Card.Link>
-    <Card.Link href="#">Another Link</Card.Link>
+    <LinkContainer to="/categories/clothes">
+        <Card.Link >View Available Clothes</Card.Link>
+    </LinkContainer>
   </Card.Body>
 </Card>
       <div>
@@ -62,10 +65,11 @@ export default class Carousel extends Component {
   <Card.Header bg="info"> <Card.Title>Games</Card.Title></Card.Header>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1500995617113-cf789362a3e1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
     <Card.Text className="text-center">
-      The outdoors is overrated. Keep yourself indoors away from the bugs with these board games.
+      The outdoors is overrated. Keep yourself inside away from the bugs with these board games.
     </Card.Text>
-    <Card.Link href="#">Card Link</Card.Link>
-    <Card.Link href="#">Another Link</Card.Link>
+    <LinkContainer to="/categories/games">
+        <Card.Link >View Available Games</Card.Link>
+    </LinkContainer>
   </Card.Body>
 </Card>
       </div>
@@ -77,8 +81,9 @@ export default class Carousel extends Component {
     <Card.Text className="text-center">
       Tired of peace and quiet and need a drumset for your child? Click here 
     </Card.Text>
-    <Card.Link href="#">Card Link</Card.Link>
-    <Card.Link href="#">Another Link</Card.Link>
+    <LinkContainer to="/categories/music">
+        <Card.Link >View Available Music</Card.Link>
+    </LinkContainer>
   </Card.Body>
 </Card>
       </div>
@@ -90,8 +95,9 @@ export default class Carousel extends Component {
     <Card.Text className="text-center">
       Run out of dough and need to mow but don't know where to go? Click below
     </Card.Text>
-    <Card.Link href="#">Card Link</Card.Link>
-    <Card.Link href="#">Another Link</Card.Link>
+    <LinkContainer to="/categories/garden">
+        <Card.Link >View Available Garden and Home Items</Card.Link>
+    </LinkContainer>
   </Card.Body>
 </Card>
       </div>
@@ -101,10 +107,11 @@ export default class Carousel extends Component {
   <Card.Header bg="info"> <Card.Title>Toys</Card.Title></Card.Header>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1520627977056-c307aeb9a625?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
     <Card.Text className="text-center">
-      Train your children to play by themselves with a variety of toys. Play at your own risk.
+      Train your children to play by themselves with a variety of toys. (Safety cannot be guaranteed).
     </Card.Text>
-    <Card.Link href="#">Card Link</Card.Link>
-    <Card.Link href="#">Another Link</Card.Link>
+      <LinkContainer to="/categories/toys">
+        <Card.Link >View Available Toys</Card.Link>
+      </LinkContainer>
   </Card.Body>
 </Card>
       </div>
