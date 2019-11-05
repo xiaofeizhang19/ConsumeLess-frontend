@@ -50,7 +50,7 @@ export default class Carousel extends Component {
   <Card.Header bg="info"> <Card.Title>Clothes</Card.Title></Card.Header>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1470309864661-68328b2cd0a5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
     <Card.Text className="text-center">
-      Find your favourite books here, anything from fiction to non-fiction
+      Still wearing that GAP jumper from 2006? Stop embarrasing yourself here
     </Card.Text>
     <Card.Link href="#">Card Link</Card.Link>
     <Card.Link href="#">Another Link</Card.Link>
@@ -75,7 +75,7 @@ export default class Carousel extends Component {
   <Card.Header bg="info"> <Card.Title>Music</Card.Title></Card.Header>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
     <Card.Text className="text-center">
-      Find your favourite books here, anything from fiction to non-fiction
+      Tired of peace and quiet and need a drumset for your child? Click here 
     </Card.Text>
     <Card.Link href="#">Card Link</Card.Link>
     <Card.Link href="#">Another Link</Card.Link>
@@ -88,7 +88,7 @@ export default class Carousel extends Component {
   <Card.Header bg="info"> <Card.Title>Garden & Home</Card.Title></Card.Header>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1458245201577-fc8a130b8829?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
     <Card.Text className="text-center">
-      Find your favourite books here, anything from fiction to non-fiction
+      Run out of dough and need to mow but don't know where to go? Click below
     </Card.Text>
     <Card.Link href="#">Card Link</Card.Link>
     <Card.Link href="#">Another Link</Card.Link>
@@ -101,7 +101,7 @@ export default class Carousel extends Component {
   <Card.Header bg="info"> <Card.Title>Toys</Card.Title></Card.Header>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1520627977056-c307aeb9a625?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
     <Card.Text className="text-center">
-      Find your favourite books here, anything from fiction to non-fiction
+      Train your children to play by themselves with a variety of toys. Play at your own risk.
     </Card.Text>
     <Card.Link href="#">Card Link</Card.Link>
     <Card.Link href="#">Another Link</Card.Link>
