@@ -9,6 +9,7 @@ import Register from './components/Register';
 import Profile from './components/Profile';
 import Items from './components/Items';
 import NewItem from './components/NewItem';
+import Home from './components/Home';
 import Categories from './components/Categories';
 import * as serviceWorker from './serviceWorker';
 
@@ -23,6 +24,7 @@ const routing = (
         <Route exact path='/items' component = {Items} />
         <Route exact path='/items/new' component = {NewItem} /> 
         <Route exact path='/categories' component = {Categories} /> 
+        <Route exact path='/home' component = {Home} /> 
       </Switch> 
   </Router>
 )

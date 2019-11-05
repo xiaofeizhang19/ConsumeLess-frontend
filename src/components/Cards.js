@@ -26,6 +26,8 @@ export default class Cards extends Component {
             {this.state.data.map((item, index) => {
               return (
              
+                
+
               <div key={index} className="col-md-6 col-lg-4">
                 <Card style={{flex:1}} border="primary" bg ="info" className="card mb-4">
                   <Card.Header>{ item.name }</Card.Header>

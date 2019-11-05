@@ -9,7 +9,7 @@ export default class Navigation extends Component {
   render() {
     return (
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="info" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
         <div className="navbar-collapse collapse w-100 order-3 order-md-0 dual-collapse2">
           <Navbar.Brand href="/">Consume£e$$</Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
