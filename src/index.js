@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import './index.css';
-import Navigation from './components/Navigation';
 // import App from './components/App';
 import Login from './components/Login';
 import Register from './components/Register';
