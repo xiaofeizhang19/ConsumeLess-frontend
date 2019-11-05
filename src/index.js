@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { Route, BrowserRouter as Router, Switch } from 'react-router-dom'
 import './index.css';
 import Navigation from './components/Navigation';
+import App from './components/App';
 import Login from './components/Login';
 import Register from './components/Register';
 import Profile from './components/Profile';
@@ -14,7 +15,8 @@ const routing = (
   <Router>
     <Navigation />
       <Switch>
-        <Route exact path='/' component = {Login} />
+        <Route exact path='/' component = {App} />
+        <Route exact path='/login' component = {Login} />
         <Route exact path='/register' component = {Register} />
         <Route exact path='/profile' component = {Profile} />
         <Route exact path='/items' component = {Items} />
