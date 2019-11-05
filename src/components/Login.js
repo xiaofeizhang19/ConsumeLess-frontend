@@ -1,5 +1,5 @@
 import React from 'react';
-import '../App.css';
+import './App.css';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Dialog from '@material-ui/core/Dialog';
