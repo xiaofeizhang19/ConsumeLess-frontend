@@ -73,9 +73,9 @@ export default class NewItem extends Component {
               <option>--Select Category--</option>
               <option value="books">Books</option>
               <option value="clothes">Clothes</option>
+              <option value="equitment">Garden/Building equipment</option>
               <option value="games">Games</option>
               <option value="music">Music</option>
-              <option value="equitment">Garden/Building equipment</option>
               <option value="toys">Toys</option>
             </Form.Control>
           </Form.Group>

@@ -75,6 +75,7 @@ export default function Register() {
     let authService = new AuthService()
   
     const [username, setUsername] = useState('');
+    const [postcode, setPostCode] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [confirmpassword, setPasswordConfirmation] = useState('');
@@ -88,7 +89,10 @@ export default function Register() {
     const handleClose = () => {
       setOpen(false);
     }
-  
+    const handlePostCode = event => {
+      setPostCode(event.target.value);
+    };
+
     const handleUserNameInput = event => {
       setUsername(event.target.value);
     };
@@ -134,7 +138,7 @@ export default function Register() {
             <img src={require('../logo-with-name.svg')} />
             <ValidatorForm className={classes.form} noValidate onSubmit={handleSubmit}>
               <CssTextField
-                className={classes.inputz}
+                className={classes.input}
                 variant="outlined"
                 margin="normal"
                 required
@@ -189,6 +193,17 @@ export default function Register() {
                 validators={['isPasswordMatch', 'required']}
                 errorMessages={['Password mismatch','Confirmation is required']}
                 onChange={handlePasswordConfirm}
+              />
+              <CssTextField
+                variant="outlined"
+                margin="normal"
+                fullWidth
+                id="postcode"
+                label="postcode"
+                name="postcode"
+                value={postcode}
+                autoFocus
+                onChange={handlePostCode}
               />
               <Button
                 type="submit"

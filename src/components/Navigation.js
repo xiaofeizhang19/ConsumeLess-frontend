@@ -2,16 +2,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import React, { Component } from 'react';
-// import AuthService from './AuthService';
+import AuthService from './AuthService';
 // const Auth = new AuthService();
 
 export default class Navigation extends Component {
   render() {
     return (
       <div>
-        <Navbar collapseOnSelect expand="lg" bg="info" variant="dark">
+        <Navbar collapseOnSelect expand="lg" bg="light" variant="light">
         <div className="navbar-collapse collapse w-100 order-3 order-md-0 dual-collapse2">
-          <Navbar.Brand href="/">Consume£e$$</Navbar.Brand>
+          <Navbar.Brand href="/"></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
@@ -21,7 +21,7 @@ export default class Navigation extends Component {
                 <NavDropdown title="User" id="collasible-nav-dropdown">
                   <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="/items/new">Add New Item</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Item href="#">Settings</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/">Log out</NavDropdown.Item>
                 </NavDropdown>
@@ -35,9 +35,9 @@ export default class Navigation extends Component {
               </LinkContainer>
             </Nav>
         </Navbar.Collapse>
-          </div>  
-        </Navbar>    
-      </div>     
+          </div>
+        </Navbar>
+      </div>
     )
   }
 }
