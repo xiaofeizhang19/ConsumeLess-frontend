@@ -34,7 +34,7 @@ export default class AuthService {
             return Promise.resolve(res);
             })
     }
-    
+
     newItem(payload) {
         return this.fetch(URLs.newItem + `?token=${this.getToken()}`, {
             method: 'POST',
@@ -43,6 +43,16 @@ export default class AuthService {
             .then(res => {
             return Promise.resolve(res);
             })
+    }
+
+    bookItem(payload) {
+      return this.fetch(URLs.requestBooking + `?token=${this.getToken()}`, {
+          method: 'POST',
+          body: payload,
+      })
+          .then(res => {
+          return Promise.resolve(res);
+          })
     }
 
     loggedIn() {

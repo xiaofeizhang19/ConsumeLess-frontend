@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 import { Route } from 'react-router-dom';
 import Itemcard from "./Itemcard"
-import getData from "../actions/getData"
 import { URLs } from '../constants/URLs'
+import Navigation from "./Navigation";
+import Cards from "./Cards";
+import getData from "../actions/getData";
+
+// import InfiniteCarousel from 'react-leaf-carousel';
 
 class Items extends Component {
   constructor(props) {
@@ -22,12 +26,15 @@ class Items extends Component {
     console.log(this.state.items)
     console.log("i'm running 1")
     return (
+      <div><Navigation />
       <div className="col-md-6 col-lg-4">
+      <Navigation />
         {this.state.items.map((itemcard, i) => {
           return (
             <Itemcard itemcard={itemcard} key={i} />
           )
         })}
+        </div>
         </div>
     );
   }

@@ -3,6 +3,7 @@ import getData from "../actions/getData"
 import { URLs } from '../constants/URLs';
 import Carousel from './Carousel';
 import MapContainer from "./Map";
+import Navigation from './Navigation'
 
 
 class Items extends Component {
@@ -19,9 +20,12 @@ class Items extends Component {
   render(){
     return (
       <div>
+      <Navigation/>
+      <div>
       < Carousel/>
       <br/>
       < MapContainer/>
+      </div>
       </div>
     )}
 }
