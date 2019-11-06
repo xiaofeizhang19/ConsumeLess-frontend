@@ -44,11 +44,11 @@ export default class Profile extends Component {
               <Col xs={6} md={4}>
                 <Card style={{ width: '18rem' }}>
                   <Card.Body>
-                    <Card.Title><MdAccountCircle></MdAccountCircle>  {user.username}</Card.Title>
+                    <Card.Title><MdAccountCircle />  {user.username}</Card.Title>
                   </Card.Body>
                   <ListGroup className="list-group-flush">
-                    <ListGroupItem><MdEmail></MdEmail>  {user.email}</ListGroupItem>
-                    <ListGroupItem><MdLocationOn></MdLocationOn>  London</ListGroupItem>
+                    <ListGroupItem><MdEmail />  {user.email}</ListGroupItem>
+                    <ListGroupItem><MdLocationOn / >  London</ListGroupItem>
                     <ListGroupItem>Member since: {user.created_at}</ListGroupItem>
                   </ListGroup>
                 </Card>
@@ -69,11 +69,11 @@ export default class Profile extends Component {
                   </Card.Body>
                     <ListGroup className="list-group-flush">
                       <ListGroupItem>
-                        <MdGrade></MdGrade>
-                        <MdGrade></MdGrade>
-                        <MdGrade></MdGrade>
-                        <MdGrade></MdGrade>
-                        <MdGrade></MdGrade>
+                        <MdGrade />
+                        <MdGrade />
+                        <MdGrade />
+                        <MdGrade />
+                        <MdGrade />
                       </ListGroupItem>
                     </ListGroup>
                   <Card.Body>
@@ -104,7 +104,6 @@ export default class Profile extends Component {
             </Accordion.Collapse>
           </Card>
         </Accordion>
-      </div>
       </div>
     )  
   }  
