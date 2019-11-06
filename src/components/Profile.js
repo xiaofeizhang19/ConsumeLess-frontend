@@ -53,11 +53,11 @@ export default class Profile extends Component {
               <Col xs={6} md={4}>
                 <Card style={{ width: '18rem' }} border="secondary">
                   <Card.Body>
-                    <Card.Title><MdAccountCircle />  {user.username}</Card.Title>
+                    <Card.Title className = "userNameTitle"><MdAccountCircle />  {user.username}</Card.Title>
                   </Card.Body>
                   <ListGroup className="list-group-flush">
-                    <ListGroupItem><MdEmail />  {user.email}</ListGroupItem>
-                    <ListGroupItem><MdLocationOn / >  London</ListGroupItem>
+                    <ListGroupItem className="iconEmail"><MdEmail />  {user.email}</ListGroupItem>
+                    <ListGroupItem className="iconLocation"><MdLocationOn / >  London</ListGroupItem>
                   </ListGroup>
                 </Card>
               </Col>
@@ -72,11 +72,11 @@ export default class Profile extends Component {
               <Col xs={6} md={4}>
                 <Card style={{ width: '18rem' }}  border="secondary">
                   <Card.Body>
-                    <Card.Title>User rating</Card.Title>
+                    <Card.Title className = "userNameTitle">User rating</Card.Title>
                   </Card.Body>
                     <ListGroup className="list-group-flush">
-                      <ListGroupItem>
-                        <MdGrade />
+                      <ListGroupItem className="star">
+                        < MdGrade />
                         <MdGrade />
                         <MdGrade />
                         <MdGrade />
