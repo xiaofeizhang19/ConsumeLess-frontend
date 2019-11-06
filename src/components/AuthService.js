@@ -55,6 +55,16 @@ export default class AuthService {
           })
     }
 
+    catItems(payload) {
+      return this.fetch(URLs.catItems, {
+          method: 'GET',
+          body: payload,
+      })
+          .then(res => {
+          return Promise.resolve(res);
+          })
+    }
+
     loggedIn() {
         // Checks if there is a saved token and it's still valid
         const token = this.getToken() // GEtting token from localstorage

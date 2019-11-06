@@ -5,5 +5,6 @@ export const URLs = {
     login: "http://consumerless-backend.herokuapp.com/login",
     register: "http://consumerless-backend.herokuapp.com/api/user/new",
     user: "http://consumerless-backend.herokuapp.com/api/user/",
-    requestBooking: "http://consumerless-backend.herokuapp.com/api/booking/new"
+    requestBooking: "http://consumerless-backend.herokuapp.com/api/booking/new",
+    catItems: "http://consumerless-backend.herokuapp.com/api/categories/clothes"
 }

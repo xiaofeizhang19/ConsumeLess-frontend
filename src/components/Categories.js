@@ -24,7 +24,7 @@ class Items extends Component {
       <div>
       < Carousel/>
       <br/>
-      < MapContainer/>
+      < MapContainer items={this.props.data}/>
       </div>
       </div>
     )}
