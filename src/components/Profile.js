@@ -38,33 +38,31 @@ export default class Profile extends Component {
   render() {
     const { user } = this.state;
     return (
-      <div>
+      <div><Navigation />
         <Jumbotron variant="primary">
           <Container>
             <Row>
               <Col xs={6} md={4}>
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '18rem' }} border="secondary">
                   <Card.Body>
                     <Card.Title><MdAccountCircle />  {user.username}</Card.Title>
                   </Card.Body>
                   <ListGroup className="list-group-flush">
                     <ListGroupItem><MdEmail />  {user.email}</ListGroupItem>
                     <ListGroupItem><MdLocationOn / >  London</ListGroupItem>
-                    <ListGroupItem>Member since: {user.created_at}</ListGroupItem>
                   </ListGroup>
                 </Card>
               </Col>
 
               <Col xs={6} md={4}>
-                <Card style={{ width: '18rem' }}>
-                  <Card.Img variant="top" src="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60(25 kB)
-                  https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60
-                  " />
+                <Card style={{ width: '18rem' }}  border="secondary">
+                  <Image variant="top" src="https://images.unsplash.com/photo-1537815749002-de6a533c64db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=300&q=60"
+                    roundedCircle />
                 </Card>
               </Col>
     
               <Col xs={6} md={4}>
-                <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '18rem' }}  border="secondary">
                   <Card.Body>
                     <Card.Title>User rating</Card.Title>
                   </Card.Body>
@@ -76,21 +74,26 @@ export default class Profile extends Component {
                         <MdGrade />
                         <MdGrade />
                       </ListGroupItem>
+                      <ListGroupItem>Member since: {user.created_at}</ListGroupItem>
                     </ListGroup>
-                  <Card.Body>
-                    <Card.Link href="#">Card Link</Card.Link>
-                    <Card.Link href="#">Another Link</Card.Link>
-                  </Card.Body>
                 </Card>
               </Col>
             </Row>
           </Container>
         </Jumbotron>
-        
+
           <Container>
           <Accordion>
+          <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="0" className="profileItems">
+                Items I Own
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body><ItemsOwn /></Card.Body>
+              </Accordion.Collapse>
+            </Card>
             <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="0">
+              <Accordion.Toggle as={Card.Header} eventKey="0" className="profileItems">
                 Items I have Borrowed
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
@@ -98,7 +101,7 @@ export default class Profile extends Component {
               </Accordion.Collapse>
             </Card>
             <Card>
-              <Accordion.Toggle as={Card.Header} eventKey="1">
+              <Accordion.Toggle as={Card.Header} eventKey="1" className="profileItems">
                 Items I am lending out
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
@@ -110,6 +113,31 @@ export default class Profile extends Component {
       </div>
     )  
   }  
+}
+
+const ItemsOwn = () => {
+  return (
+    <div className="container">
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Category</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Nintendo Switch</td>
+            <td>Amazing game</td>
+            <td>Game</td>
+            <td>Available</td>
+          </tr>
+        </tbody>
+      </Table>
+    </div>
+  )
 }
 
 const ItemsBorrowed = () => {
