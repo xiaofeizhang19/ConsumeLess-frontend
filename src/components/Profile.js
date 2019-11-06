@@ -7,26 +7,26 @@ import { URLs } from '../constants/URLs'
 export default class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      username: "",
-      email: "",
-      created_at: ""
-    }
+    this.state = { 
+      user: {
+        username: "",
+        email: "",
+        created_at: "",
+    } }
     this.Auth = new AuthService();
   }
 
   async componentDidMount() {
     const userId = this.Auth.getProfile().user_id;
-    console.log(userId);
-    const user = await getData(URLs.user + `/api/user/${userId}`);
-    console.log(user);
-    this.setState({ user })
+    const user = await getData(URLs.user + `${userId}`);
+    this.setState({ user });
   }
 
   render() {
+    const { user } = this.state;
     return (
       <div className="Container">
-        <h3>Hello user</h3>
+        <h3>Hello </h3>
         <Table>
         <thead>
           <tr>
@@ -38,10 +38,10 @@ export default class Profile extends Component {
         </thead>
         <tbody>
           <tr>
-            <td>Arya_Stark</td>
-            <td>arya@email.com</td>
-            <td>Winterfell</td>
-            <td>01-11-2019</td>
+            <td>{ user.username }</td>
+            <td>{ user.email }</td>
+            <td>London</td>
+            <td>{ user.created_at }</td>
           </tr>
         </tbody>
       </Table>
