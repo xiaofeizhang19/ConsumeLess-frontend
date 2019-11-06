@@ -3,7 +3,7 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import React, { Component } from 'react';
 import AuthService from './AuthService';
-const Auth = new AuthService();
+// const Auth = new AuthService();
 
 export default class Navigation extends Component {
   render() {
