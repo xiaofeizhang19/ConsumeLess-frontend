@@ -24,7 +24,13 @@ export default class Profile extends Component {
         username: "",
         email: "",
         created_at: "",
-    } }
+      },
+      // itemsOwn: {
+      //   name: "",
+      //   category: "",
+      //   description: "",
+      // }
+    }
     this.Auth = new AuthService();
   }
 
@@ -32,6 +38,8 @@ export default class Profile extends Component {
     const userId = this.Auth.getProfile().user_id;
     const user = await getData(URLs.user + `${userId}`);
 
+    // const itemsOwn = await getData(URLs.itemsOwn);
+    // console.log(itemsOwn);
     this.setState({ user });
   }
 
