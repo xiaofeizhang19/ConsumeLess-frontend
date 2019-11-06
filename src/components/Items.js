@@ -1,30 +1,43 @@
 import React, { Component } from "react";
+import { Route } from 'react-router-dom';
+import Itemcard from "./Itemcard"
+import { URLs } from '../constants/URLs'
 import Navigation from "./Navigation";
 import Cards from "./Cards";
 import getData from "../actions/getData";
-import { URLs } from '../constants/URLs';
+
 // import InfiniteCarousel from 'react-leaf-carousel';
 
-
-export default class Items extends Component {
+class Items extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = {
+      items: []
+    };
   }
 
   async componentDidMount() {
-    const data = await getData(URLs.items);
-    this.setState({ data })
+    const items = await getData(URLs.items);
+    this.setState({ items })
+    console.log("me too")
   }
 
   render(){
+    console.log(this.state.items)
+    console.log("i'm running 1")
     return (
       <div><Navigation />
-      <div className = "container">
-      <h1>Items</h1>
-      < Cards />
-      </div>
-      </div>
-    )
+      <div className="col-md-6 col-lg-4">
+      <Navigation />
+        {this.state.items.map((itemcard, i) => {
+          return (
+            <Itemcard itemcard={itemcard} key={i} />
+          )
+        })}
+        </div>
+        </div>
+    );
   }
 }
+
+export default Items;

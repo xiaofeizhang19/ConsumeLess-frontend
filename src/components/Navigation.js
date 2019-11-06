@@ -35,9 +35,9 @@ export default class Navigation extends Component {
               </LinkContainer>
             </Nav>
         </Navbar.Collapse>
-          </div>  
-        </Navbar>    
-      </div>     
+          </div>
+        </Navbar>
+      </div>
     )
   }
 }
