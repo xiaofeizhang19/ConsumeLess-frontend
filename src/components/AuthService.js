@@ -117,7 +117,8 @@ export default class AuthService {
         }
 
         return fetch(url, {
-            headers,
+            // headers,
+            credentials: 'include',
             ...options
         })
             .then(this._checkStatus)

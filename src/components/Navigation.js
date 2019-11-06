@@ -3,9 +3,13 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import React, { Component } from 'react';
 import AuthService from './AuthService';
-// const Auth = new AuthService();
+const Auth = new AuthService();
 
 export default class Navigation extends Component {
+
+  handleLogout = () => {
+    Auth.lougout();
+  }
   render() {
     return (
       <div>
@@ -23,7 +27,7 @@ export default class Navigation extends Component {
                   <NavDropdown.Item href="/items/new">Add New Item</NavDropdown.Item>
                   <NavDropdown.Item href="#">Settings</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/">Log out</NavDropdown.Item>
+                  <NavDropdown.Item onClick={this.handleLogout}>Log out</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
             <Nav>
