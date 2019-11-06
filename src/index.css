@@ -17,5 +17,23 @@ body {
   }
 
   .profileItems {
-    background-color: #a8d481 !important
+    background-color: #a8d481 !important;
+    text-align: center;
+    color:rgb(92, 43, 226);
+  }
+
+  .star {
+    color:gold;
+  }
+
+  .iconEmail{
+    color:green;
+  }
+
+  .iconLocation{
+    color:red;
+  }
+
+  .userNameTitle{
+    color:purple;
   }
