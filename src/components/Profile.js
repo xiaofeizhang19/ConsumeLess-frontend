@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
 import AuthService from './AuthService';
+import Navigation from './Navigation';
 import getData from "../actions/getData"
 import { URLs } from '../constants/URLs'
 
@@ -103,6 +104,7 @@ export default class Profile extends Component {
             </Accordion.Collapse>
           </Card>
         </Accordion>
+      </div>
       </div>
     )  
   }  
