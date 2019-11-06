@@ -32,24 +32,19 @@ export class MapContainer extends Component {
 
   async componentDidMount(){
     const items = await getData(URLs.catItems);
-    console.log('1')
-    console.log(this.state.items)
-    console.log('2')
-    // this.state.items = this.setState( { items: items } )
-    // console.log(this.state.items[1].latitude)
-    // console.log(this.state.items[1].longitude)
-    console.log('3')
-    this.state.lat = items[1].latitude
-    this.state.lng = items[1].longitude
-    let marker = { lat: this.state.lat, lng: this.state.lng }
-    let tempMarks = []
-    tempMarks.push(marker)
+    let latitude = null
+    let longitude = null
+    let marker = { lat: latitude, lng: longitude }
+    let markerArray = []
+    markerArray = items.map(function (item) {
+          marker.lat = null
+          marker.lng = null
+          marker.lat = item.latitude;
+          marker.lng = item.longitude;
+          return marker
+          });
     this.setState( { items: items,
-                      markers: tempMarks })
-    console.log('4')
-    console.log(marker)
-    console.log('5')
-    console.log(this.state.markers)
+                     markers: markerArray })
   }
 
   onMarkerClick = (props, marker, e) =>
@@ -70,7 +65,8 @@ export class MapContainer extends Component {
 
 
   render() {
-    console.log(this.state.markers)
+    console.log("here")
+    console.log(this.state.markers[1])
     let icon = {
       url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
     }
@@ -92,7 +88,7 @@ export class MapContainer extends Component {
         <Marker
           onClick={this.onMarkerClick}
           name={'Test Marker'}
-          position={ this.state.markers[0] }
+          position={ this.state.markers[1] }
         />
         <InfoWindow
           marker={this.state.activeMarker}
