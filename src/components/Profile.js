@@ -31,6 +31,7 @@ export default class Profile extends Component {
   async componentDidMount() {
     const userId = this.Auth.getProfile().user_id;
     const user = await getData(URLs.user + `${userId}`);
+
     this.setState({ user });
   }
 
@@ -85,25 +86,27 @@ export default class Profile extends Component {
             </Row>
           </Container>
         </Jumbotron>
-
-        <Accordion defaultActiveKey="0">
-          <Card>
-            <Accordion.Toggle as={Card.Header} eventKey="0">
-              Items I have Borrowed
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="0">
-              <Card.Body><ItemsBorrowed /></Card.Body>
-            </Accordion.Collapse>
-          </Card>
-          <Card>
-            <Accordion.Toggle as={Card.Header} eventKey="1">
-              Items I am lending out
-            </Accordion.Toggle>
-            <Accordion.Collapse eventKey="1">
-              <Card.Body><ItemsLent /></Card.Body>
-            </Accordion.Collapse>
-          </Card>
-        </Accordion>
+        
+          <Container>
+          <Accordion>
+            <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="0">
+                Items I have Borrowed
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="0">
+                <Card.Body><ItemsBorrowed /></Card.Body>
+              </Accordion.Collapse>
+            </Card>
+            <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="1">
+                Items I am lending out
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body><ItemsLent /></Card.Body>
+              </Accordion.Collapse>
+            </Card>
+          </Accordion>
+        </Container>
       </div>
     )  
   }  
@@ -111,7 +114,26 @@ export default class Profile extends Component {
 
 const ItemsBorrowed = () => {
   return (
-    <p>Items I have borrowed</p>
+    <div className="container">
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Description</th>
+            <th>Borrowed From</th>
+            <th>Return Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>GoT</td>
+            <td>Book</td>
+            <td>Otto</td>
+            <td>01/12/2019</td>
+          </tr>
+        </tbody>
+      </Table>
+    </div>
   )
 }
 
