@@ -85,25 +85,25 @@ export default class Profile extends Component {
           </Container>
         </Jumbotron>
 
-                <Accordion defaultActiveKey="0">
-  <Card>
-    <Accordion.Toggle as={Card.Header} eventKey="0">
-      Items I have Borrowed
-    </Accordion.Toggle>
-    <Accordion.Collapse eventKey="0">
-      <Card.Body><ItemsBorrowed /></Card.Body>
-    </Accordion.Collapse>
-  </Card>
-  <Card>
-    <Accordion.Toggle as={Card.Header} eventKey="1">
-      Items I am lending out
-    </Accordion.Toggle>
-    <Accordion.Collapse eventKey="1">
-      <Card.Body><ItemsLent /></Card.Body>
-    </Accordion.Collapse>
-  </Card>
-</Accordion>
-            </div>
+        <Accordion defaultActiveKey="0">
+          <Card>
+            <Accordion.Toggle as={Card.Header} eventKey="0">
+              Items I have Borrowed
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="0">
+              <Card.Body><ItemsBorrowed /></Card.Body>
+            </Accordion.Collapse>
+          </Card>
+          <Card>
+            <Accordion.Toggle as={Card.Header} eventKey="1">
+              Items I am lending out
+            </Accordion.Toggle>
+            <Accordion.Collapse eventKey="1">
+              <Card.Body><ItemsLent /></Card.Body>
+            </Accordion.Collapse>
+          </Card>
+        </Accordion>
+      </div>
     )  
   }  
 }
