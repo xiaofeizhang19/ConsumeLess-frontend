@@ -11,3 +11,11 @@ body {
     font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
       monospace;
   }
+
+  .Navigation {
+    background-color: rgb(125, 129, 121) !important
+  }
+
+  .profileItems {
+    background-color: #a8d481 !important
+  }
