@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import AuthService from './AuthService';
+import Navigation from "./Navigation";
 
 export default class NewItem extends Component {
   constructor(props) {
@@ -40,6 +41,7 @@ export default class NewItem extends Component {
     const { name, description, category, overdueCharge, deposit } = this.state;
 
     return (
+      <div><Navigation />
       <div className="container">
         <h3>Add a new item</h3>
         <br />
@@ -103,6 +105,7 @@ export default class NewItem extends Component {
             Submit
           </Button>
         </Form>
+      </div>
       </div>
     )
   }
