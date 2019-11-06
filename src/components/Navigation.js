@@ -3,7 +3,7 @@ import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import React, { Component } from 'react';
 import AuthService from './AuthService';
-const Auth = new AuthService();
+// const Auth = new AuthService();
 
 export default class Navigation extends Component {
   render() {
@@ -21,7 +21,7 @@ export default class Navigation extends Component {
                 <NavDropdown title="User" id="collasible-nav-dropdown">
                   <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="/items/new">Add New Item</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                  <NavDropdown.Item href="#">Settings</NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="/">Log out</NavDropdown.Item>
                 </NavDropdown>
