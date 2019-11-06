@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="100px" height="50px" viewBox="0 0 250 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 59.1 (86144) - https://sketch.com -->
+    <title>Slice 1</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="forest" transform="translate(187.000000, 9.000000)">
+            <circle id="Oval" fill="#88C057" fill-rule="nonzero" cx="26.5" cy="37.5" r="15.5"></circle>
+            <path d="M47.8592681,7 L39.9327975,30.5593107 C41.4206566,32.9516125 42.2944596,35.7688389 42.2944596,38.7961269 C42.2944596,44.3645603 39.376197,49.2379898 35,52 L47.8592681,52 L63,52 L47.8592681,7 Z" id="Path" fill="#659C35" fill-rule="nonzero"></path>
+            <path d="M18.7916667,7 C20.5565556,7 22,8.57530435 22,10.5 L22,10.5 C22,12.4246957 20.5565556,14 18.7916667,14 L5.04166667,14 L4.58333333,14 C2.05211111,14 0,11.7612174 0,9.00017391 C0,6.23913043 2.05211111,4.00034783 4.58333333,4.00034783 C4.58333333,4.00034783 6.70266667,0 11.9166667,0 C15.1824444,0 18.3333333,1.81269565 18.3333333,7 L18.7916667,7 Z" id="Path" fill="#C6E2F7" fill-rule="nonzero"></path>
+            <line x1="23" y1="44" x2="27" y2="48" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="30" y1="44" x2="26" y2="48" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="26" y1="48" x2="26" y2="65" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="44" y1="44" x2="48" y2="48" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="52" y1="44" x2="48" y2="48" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+            <line x1="48" y1="48" x2="48" y2="65" id="Path" stroke="#6C4127" stroke-width="2" stroke-linecap="round"></line>
+        </g>
+        <text id="consume" font-family="STHeitiSC-Light, Heiti SC" font-size="40" font-weight="300" fill="#88C057">
+            <tspan x="0" y="34">consume</tspan>
+        </text>
+        <text id="less" font-family="STHeitiSC-Light, Heiti SC" font-size="40" font-weight="300" fill="#659C35">
+            <tspan x="114" y="70">less</tspan>
+        </text>
+        <text id="consume" font-family="STHeitiSC-Light, Heiti SC" font-size="40" font-weight="300" fill="#88C057">
+            <tspan x="0" y="34">consume</tspan>
+        </text>
+        <text id="less" font-family="STHeitiSC-Light, Heiti SC" font-size="40" font-weight="300" fill="#659C35">
+            <tspan x="114" y="70">less</tspan>
+        </text>
+    </g>
+</svg>
