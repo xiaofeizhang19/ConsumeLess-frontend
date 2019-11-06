@@ -28,7 +28,6 @@ class Items extends Component {
     return (
       <div><Navigation />
       <div className="col-md-6 col-lg-4">
-      <Navigation />
         {this.state.items.map((itemcard, i) => {
           return (
             <Itemcard itemcard={itemcard} key={i} />
