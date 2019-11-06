@@ -91,7 +91,7 @@ export default class Profile extends Component {
       Items I have Borrowed
     </Accordion.Toggle>
     <Accordion.Collapse eventKey="0">
-      <Card.Body>Hello! I'm the body</Card.Body>
+      <Card.Body><ItemsBorrowed /></Card.Body>
     </Accordion.Collapse>
   </Card>
   <Card>
@@ -99,11 +99,23 @@ export default class Profile extends Component {
       Items I am lending out
     </Accordion.Toggle>
     <Accordion.Collapse eventKey="1">
-      <Card.Body>Hello! I'm another body</Card.Body>
+      <Card.Body><ItemsLent /></Card.Body>
     </Accordion.Collapse>
   </Card>
 </Accordion>
             </div>
     )  
   }  
+}
+
+const ItemsBorrowed = () => {
+  return (
+    <p>Items I have borrowed</p>
+  )
+}
+
+const ItemsLent = () => {
+  return (
+    <p>Items I am lending out</p>
+  )
 }
