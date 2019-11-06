@@ -9,22 +9,28 @@ import Navigation from './Navigation'
 class Items extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { items: [],
+                   category: 'books',
+                  };
   }
 
   async componentDidMount() {
-    const data = await getData(URLs.items);
-    this.setState({ data })
+    const items = await getData(URLs.category + `${this.state.category}`);
+    this.setState({ items })
   }
-
+  changeCategory() {
+  console.log('I ran!')
+  }
   render(){
+    console.log(this.state.items)
     return (
       <div>
       <Navigation/>
       <div>
-      < Carousel/>
-      <br/>
-      < MapContainer/>
+      <Carousel category={this.state.category}/>
+      </div>
+      <div>
+      <MapContainer items={this.state.items}/>
       </div>
       </div>
     )}
