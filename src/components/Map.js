@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { InfoWindow, Marker, Map, GoogleApiWrapper } from 'google-maps-react';
+import { URLs } from '../constants/URLs';
+import getData from "../actions/getData";
 
 const mapStyles = {
   width: '100vw',
@@ -7,12 +9,17 @@ const mapStyles = {
 };
 
 export class MapContainer extends Component {
-  state = {
-    showingInfoWindow: false,
-    activeMarker: {},
-    selectedPlace: {}
-  };
-
+  constructor(props) {
+    super(props)
+    this.state = {
+      markers:[],
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {},
+      items: this.props.items
+    };
+    // this.catItems = this.catItems.bind(this);
+  }
   onMarkerClick = (props, marker, e) =>
     this.setState({
       selectedPlace: props,
@@ -31,24 +38,27 @@ export class MapContainer extends Component {
 
 
   render() {
+    const { items } = this.props;
+    this.state.items.map((item)=>{ console.log(item.longitude) })
+    console.log(items)
     let icon = {
       url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
     }
     return (
       <Map
         google={this.props.google}
-        zoom={14}
+        zoom={12}
         style={mapStyles}
         initialCenter={{
          lat: 51.51746,
          lng: -0.07329
         }}
       >
-        <Marker
-          onClick={this.onMarkerClick}
-          icon={icon}
-          name={'Kenyatta International Convention Centre'}
-        />
+      {items.map((item, i) => {
+        return (
+          <Marker name={ item.name } position={{lat: item.latitude, lng: item.longitude}} key={i} />
+        )
+      })}
         <InfoWindow
           marker={this.state.activeMarker}
           visible={this.state.showingInfoWindow}
