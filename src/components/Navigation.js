@@ -40,19 +40,17 @@ export default class Navigation extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <LinkContainer to="/items">
-                <Nav.Link eventKey={1}>Home</Nav.Link>
-              </LinkContainer>
               <LinkContainer to="/categories">
-                <Nav.Link eventKey={2}>Categories</Nav.Link>
+                <Nav.Link eventKey={1}>Home</Nav.Link>
               </LinkContainer>
                 <NavDropdown title={ username } id="collasible-nav-dropdown">
                   <NavDropdown.Item href="/items/new">Add New Item</NavDropdown.Item>
                   <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="#">Settings</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item onClick={() => this.setState({ navigate: true })}>Log out</NavDropdown.Item>
                 </NavDropdown>
+              <LinkContainer to="#">
+                <Nav.Link eventKey={3} onClick={() => this.setState({ navigate: true })}>Log out</Nav.Link>
+              </LinkContainer>
             </Nav>
         </Navbar.Collapse>
           </div>

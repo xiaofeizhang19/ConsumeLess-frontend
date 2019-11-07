@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import getData from "../actions/getData";
 import { URLs } from '../constants/URLs';
 import ItemsTable from './ItemsTable';
+import RequestTable from './RequestTable'
 
 import Card from 'react-bootstrap/Card'
 import Accordion from 'react-bootstrap/Accordion'
@@ -31,6 +32,7 @@ export default class Profile extends Component {
       bookingRequests: []
     }
     this.Auth = new AuthService();
+    this.confirmRequest = this.confirmRequest.bind(this);
   }
 
   async componentDidMount() {
@@ -41,15 +43,31 @@ export default class Profile extends Component {
     const token = this.Auth.getToken();
     const itemsOwn = await getData(URLs.itemsOwn + `?token=${token}`);
     this.setState({ itemsOwn });
+    console.log(itemsOwn)
 
-    // const itemsBorrowed = await getData(URLs.itemsBorrowed + `?token=${token)}`);
-    // this.setState({ itemsBorrowed });
+    const itemsBorrowed = await getData(URLs.itemsBorrowed + `?token=${token}`);
+    this.setState({ itemsBorrowed });
+    console.log(itemsBorrowed)
 
     const itemsLent = await getData(URLs.itemsLent + `?token=${token}`);
     this.setState({ itemsLent });
 
     const bookingRequests = await getData(URLs.bookingRequests + `?token=${token}`);
     this.setState({ bookingRequests });
+  }
+
+  confirmRequest = (index, event) => {
+    let id = this.state.bookingRequests[index].id
+    this.Auth.confirmRequest(id)
+      .then(res => this.props.history.replace('/profile'))
+      .catch(error => alert(error))
+  }
+
+  rejectRequest = (index, event) => {
+    let id = this.state.bookingRequests[index].id
+    this.Auth.rejectRequest(id)
+      .then(res => this.props.history.replace('/profile'))
+      .catch(error => alert(error))
   }
 
   render() {
@@ -129,7 +147,7 @@ export default class Profile extends Component {
                 Booking Requests
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
-                <Card.Body><ItemsTable tableData={this.state.bookingRequests} /></Card.Body>
+                <Card.Body><RequestTable tableData={this.state.bookingRequests} confirmRequest={this.confirmRequest}/></Card.Body>
               </Accordion.Collapse>
             </Card>
             </Card>
