@@ -12,7 +12,7 @@ import NewItem from './components/NewItem';
 
 import Map from './components/Map';
 
-import Categories from './components/Categories';
+import BrowseByCategory from './components/BrowseByCategory';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -28,7 +28,7 @@ const routing = (
         <Route exact path='/item/:id' component = {Item} />
         {/* <Route exact path='/items/new' component = {NewItem} /> */}
         <Route exact path='/map' component = {Map} />
-        <Route exact path='/categories' component = {Categories} />
+        <Route exact path='/categories' component = {BrowseByCategory} />
 
       </Switch>
   </Router>

@@ -29,6 +29,7 @@ export default class Carousel extends Component {
 
     render() {
       console.log(this.state.category)
+      const { changeCategory, categories} = this.props;
         return (
             <div>
                 <div>
@@ -66,7 +67,7 @@ export default class Carousel extends Component {
       Find your favourite books here, anything from fiction all the way to non-fiction
     </Card.Text>
     <LinkContainer to="#books">
-        <Card.Link onClick={this.props.changeCategory} >View Available Books</Card.Link>
+        <Card.Link onClick={changeCategory.bind(this, categories[0])} >View Available Books</Card.Link>
     </LinkContainer>
   </Card.Body>
 </Card>
@@ -79,7 +80,7 @@ export default class Carousel extends Component {
       Still wearing that GAP jumper from 2006? Stop embarrasing yourself here
     </Card.Text>
     <LinkContainer to="#clothes">
-        <Card.Link onClick={this.props.changeCategory} >View Available Clothes</Card.Link>
+        <Card.Link onClick={changeCategory.bind(this, categories[1])} >View Available Clothes</Card.Link>
     </LinkContainer>
   </Card.Body>
 </Card>
@@ -92,7 +93,7 @@ export default class Carousel extends Component {
       The outdoors is overrated. Keep yourself inside away from the bugs with these board games.
     </Card.Text>
     <LinkContainer to="#games">
-        <Card.Link onClick={this.props.changeCategory} >View Available Games</Card.Link>
+        <Card.Link onClick={changeCategory.bind(this, categories[2])} >View Available Games</Card.Link>
     </LinkContainer>
   </Card.Body>
 </Card>
@@ -106,7 +107,7 @@ export default class Carousel extends Component {
       Tired of peace and quiet and need a drumset for your child? Click here
     </Card.Text>
     <LinkContainer to="#music">
-        <Card.Link onClick={this.props.changeCategory} >View Available Music</Card.Link>
+        <Card.Link onClick={changeCategory.bind(this, categories[3])} >View Available Music</Card.Link>
     </LinkContainer>
   </Card.Body>
 </Card>
@@ -120,7 +121,7 @@ export default class Carousel extends Component {
       Run out of dough and need to mow but don't know where to go? Click below
     </Card.Text>
     <LinkContainer to="#garden">
-        <Card.Link onClick={this.props.changeCategory} >View Available Garden and Home Items</Card.Link>
+        <Card.Link onClick={changeCategory.bind(this, categories[4])} >View Available Garden and Home Items</Card.Link>
     </LinkContainer>
   </Card.Body>
 </Card>
@@ -134,7 +135,7 @@ export default class Carousel extends Component {
       Train your children to play by themselves with a variety of toys. (Safety cannot be guaranteed).
     </Card.Text>
       <LinkContainer to="#toys">
-        <Card.Link onClick={this.props.changeCategory} >View Available Toys</Card.Link>
+        <Card.Link onClick={changeCategory.bind(this, categories[5])} >View Available Toys</Card.Link>
       </LinkContainer>
   </Card.Body>
 </Card>
