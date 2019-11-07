@@ -29,8 +29,9 @@ export default class Navigation extends Component {
       localStorage.removeItem('id_token');
       return <Redirect to="/" push={true} />
     }
+    
     const { username } = this.state.user;
-    console.log(username)
+
     return (
       <div>
         <Navbar collapseOnSelect expand="lg" variant="dark" className="Navigation">
