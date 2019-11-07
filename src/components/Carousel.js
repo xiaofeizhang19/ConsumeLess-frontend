@@ -28,7 +28,6 @@ export default class Carousel extends Component {
     // }
 
     render() {
-      console.log(this.state.category)
       const { changeCategory, categories} = this.props;
         return (
             <div>
