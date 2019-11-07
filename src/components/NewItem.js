@@ -163,8 +163,8 @@ export default function Register() {
     console.log(event.target)
     let payload = new FormData(event.target)
 
-    authService.register(payload)
-      .then(res => history.replace('/profile'))
+    authService.newItem(payload)
+      .then(res => history.replace('/categories'))
       .catch(error => handleClickOpen())
   };
 
