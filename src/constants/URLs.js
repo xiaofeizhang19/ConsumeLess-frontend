@@ -2,6 +2,7 @@ export const URLs = {
     items: "http://localhost:5000/api/item/index",
     category: "http://localhost:5000/api/categories/",
     newItem: "http://localhost:5000/api/item/new",
+    item: "http://localhost:5000/api/item/",
 
     itemsOwn: "http://localhost:5000/api/items",
     itemsLent: "http://localhost:5000/api/booking/confirmed",
