@@ -59,13 +59,15 @@ export default class Profile extends Component {
   }
 
   confirmRequest = (index, event) => {
-    console.log("I was clicked")
-    console.log(this.state.bookingRequests)
-    console.log(index)
     let id = this.state.bookingRequests[index].id
-    console.log(id)
-
     this.Auth.confirmRequest(id)
+      .then(res => this.props.history.replace('/profile'))
+      .catch(error => alert(error))
+  }
+
+  rejectRequest = (index, event) => {
+    let id = this.state.bookingRequests[index].id
+    this.Auth.rejectRequest(id)
       .then(res => this.props.history.replace('/profile'))
       .catch(error => alert(error))
   }

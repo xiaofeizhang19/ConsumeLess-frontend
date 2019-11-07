@@ -1,21 +1,19 @@
 export const URLs = {
-    items: "http://localhost:5000/api/item/index",
-    category: "http://localhost:5000/api/categories/",
-    newItem: "http://localhost:5000/api/item/new",
-    item: "http://localhost:5000/api/item/",
+    items: "http://consumerless-backend.herokuapp.com/api/item/index",
+    category: "http://consumerless-backend.herokuapp.com/api/categories/",
+    newItem: "http://consumerless-backend.herokuapp.com/api/item/new",
+    item: "http://consumerless-backend.herokuapp.com/api/item/",
 
-    itemsOwn: "http://localhost:5000/api/items",
-    itemsBorrowed: "http://localhost:5000/api/bookings",
-    itemsLent: "http://localhost:5000/api/booking/confirmed",
+    itemsOwn: "http://consumerless-backend.herokuapp.com/api/items",
+    itemsBorrowed: "http://consumerless-backend.herokuapp.com/api/bookings",
+    itemsLent: "http://consumerless-backend.herokuapp.com/api/booking/confirmed",
 
-    login: "http://localhost:5000/login",
-    register: "http://localhost:5000/api/user/new",
-    user: "http://localhost:5000/api/user/",
-
-    requestBooking: "http://localhost:5000/api/booking/new",
-    bookingRequests: "http://localhost:5000/api/booking/requests",
-
-    requestBooking: "http://localhost:5000/api/booking/new",
-    confirmBooking: "http://localhost:5000/api/booking/",
-    bookingRequests: "http://localhost:5000/api/booking/requests"
+    login: "http://consumerless-backend.herokuapp.com/login",
+    register: "http://consumerless-backend.herokuapp.com/api/user/new",
+    user: "http://consumerless-backend.herokuapp.com/api/user/",
+    
+    requestBooking: "http://consumerless-backend.herokuapp.com/api/booking/new",
+    confirmBooking: "http://consumerless-backend.herokuapp.com/api/booking/",
+    rejectBooking: "http://consumerless-backend.herokuapp.com/api/booking/",
+    bookingRequests: "http://consumerless-backend.herokuapp.com/api/booking/requests"
 }
