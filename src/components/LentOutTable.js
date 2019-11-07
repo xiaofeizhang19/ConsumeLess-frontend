@@ -29,8 +29,7 @@ const TableHeader = () => {
         <th>Overdue Charge</th>
         <th>Deposit</th>
         <th>Return By</th>
-        <th>Lend To</th>
-        <th>Action</th>
+        <th>Lent To</th>
       </tr>
     </thead>
   )
@@ -50,11 +49,6 @@ const TableBody = props => {
           <td>{row.deposit}</td>
           <td>{row.return_by}</td>
           <td>{row.username}</td>
-          <input type='hidden' name='item_id' value={ row.id } />
-          <td>
-            <Button onClick={() => props.confirmRequest(index)} onvariant="outline-secondary" size="sm">Confirm</Button>
-            <Button variant="outline-secondary" size="sm">Reject</Button>
-          </td>
         </tr>
       )
     })

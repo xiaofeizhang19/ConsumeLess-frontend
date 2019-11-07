@@ -56,7 +56,7 @@ export default class AuthService {
     }
 
     confirmRequest(id) {
-        return this.fetch(URLs.requestBooking + `${id}` + `?token=${this.getToken()}`, {
+        return this.fetch(URLs.confirmBooking + `${id}` + `?token=${this.getToken()}`, {
             method: 'PATCH',
         })
             .then(res => {

@@ -3,7 +3,7 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import AuthService from './AuthService';
 
-export default class RequestTable extends Component {
+export default class BorrowedTable extends Component {
 
   render() {
     const { tableData, confirmRequest } = this.props;
@@ -29,8 +29,7 @@ const TableHeader = () => {
         <th>Overdue Charge</th>
         <th>Deposit</th>
         <th>Return By</th>
-        <th>Lend To</th>
-        <th>Action</th>
+        <th>Return To</th>
       </tr>
     </thead>
   )
@@ -49,12 +48,7 @@ const TableBody = props => {
           <td>{row.overdue_charge}</td>
           <td>{row.deposit}</td>
           <td>{row.return_by}</td>
-          <td>{row.username}</td>
-          <input type='hidden' name='item_id' value={ row.id } />
-          <td>
-            <Button onClick={() => props.confirmRequest(index)} onvariant="outline-secondary" size="sm">Confirm</Button>
-            <Button variant="outline-secondary" size="sm">Reject</Button>
-          </td>
+          <td>{row.postcode}</td>
         </tr>
       )
     })
