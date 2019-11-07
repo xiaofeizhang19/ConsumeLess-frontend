@@ -26,6 +26,9 @@ export default class Profile extends Component {
         created_at: "",
       },
       itemsOwn: [],
+      itemsBorrowed: [],
+      itemsLent: [],
+      bookingRequests: []
     }
     this.Auth = new AuthService();
   }
@@ -34,11 +37,19 @@ export default class Profile extends Component {
     const userId = this.Auth.getProfile().user_id;
     const user = await getData(URLs.user + `${userId}`);
     this.setState({ user });
-    console.log(URLs.itemsOwn + `?token=${this.Auth.getToken()}`)
-    const itemsOwn = await getData(URLs.itemsOwn + `?token=${this.Auth.getToken()}`);
-    console.log("_______________")
-    console.log(itemsOwn);
+
+    const token = this.Auth.getToken();
+    const itemsOwn = await getData(URLs.itemsOwn + `?token=${token}`);
     this.setState({ itemsOwn });
+
+    // const itemsBorrowed = await getData(URLs.itemsBorrowed + `?token=${token)}`);
+    // this.setState({ itemsBorrowed });
+
+    const itemsLent = await getData(URLs.itemsLent + `?token=${token}`);
+    this.setState({ itemsLent });
+
+    const bookingRequests = await getData(URLs.bookingRequests + `?token=${token}`);
+    this.setState({ bookingRequests });
   }
 
   render() {
@@ -103,7 +114,7 @@ export default class Profile extends Component {
                 Items I have Borrowed
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
-                <Card.Body></Card.Body>
+                <Card.Body><ItemsTable tableData={this.state.itemsBorrowed} /></Card.Body>
               </Accordion.Collapse>
             </Card>
             <Card>
@@ -111,8 +122,16 @@ export default class Profile extends Component {
                 Items I am lending out
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
-                <Card.Body></Card.Body>
+                <Card.Body><ItemsTable tableData={this.state.itemsLent} /></Card.Body>
               </Accordion.Collapse>
+              <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="1" className="profileItems">
+                Booking Requests
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body><ItemsTable tableData={this.state.bookingRequests} /></Card.Body>
+              </Accordion.Collapse>
+            </Card>
             </Card>
           </Accordion>
         </Container>
