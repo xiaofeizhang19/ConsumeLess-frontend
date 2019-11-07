@@ -20,6 +20,7 @@ class Item extends Component {
   }
 
   makeRequest(event) {
+    console.log(event)
     event.preventDefault();
     const payload = new FormData(event.target)
     console.log(payload)
@@ -38,33 +39,44 @@ render() {
     return (
       <div>
       <Navigation />
-      <br/>
+      <div style={{padding:40}}>
       <Card style={{display: 'flex', justifyContent: 'center'}} bg ="light" className="SingleCard">
-      <Card.Header>Name: { (this.state.item != undefined) ? this.state.item.name : null }</Card.Header>
-      <Card.Img src='https://images.unsplash.com/photo-1572715655204-47e297d3b6dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' alt =''/>
+      <Card.Img height="250" src='https://images.unsplash.com/photo-1572715655204-47e297d3b6dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' alt =''/>
       <Card.Body>
-        <Card.Title>Description: { (this.state.item != undefined) ? this.state.item.description : null }</Card.Title>
-        <Card.Title>Category: { (this.state.item != undefined) ? this.state.item.category : null }</Card.Title>
-        <Card.Title>Deposit: £{ (this.state.item != undefined) ? this.state.item.deposit : null }</Card.Title>
-        <Card.Title>Daily Overdue Charge: £{ (this.state.item != undefined) ? this.state.item.overdue_charge : null }</Card.Title>
-        <form onSubmit={this.makeRequest}>
-        <InputGroup className="mb-3">
-        <Card.Title>Days you want to borrow for</Card.Title>
-        <FormControl
-        aria-label="Recipient's used"
-        aria-describedby="basic-addon2"
-        />
-        <InputGroup.Append 
-          type='hidden'
-          name='item_id'
-          value={ (this.state.item != null) ? this.state.item.id : null }
-          >
-        <Button variant="outline-secondary">Request Item</Button>
-        </InputGroup.Append>
-        </InputGroup>
-        </form>
+        <Card.Title>{ (this.state.item != undefined) ? this.state.item.name : null } - { (this.state.item != undefined) ? this.state.item.category : null }</Card.Title>
+        <Card.Subtitle className="mb-2 text-muted">Deposit: £{ (this.state.item != undefined) ? this.state.item.deposit : null } - Daily Overdue Charge: £{ (this.state.item != undefined) ? this.state.item.overdue_charge : null }</Card.Subtitle>
+        <br/>
+        
+        <Card.Subtitle className="mb-2 text-muted">Description</Card.Subtitle>
+        <Card.Text>{ (this.state.item != undefined) ? this.state.item.description : null }</Card.Text>
+
+        <Card.Text></Card.Text>
+
+        <Card.Title></Card.Title>
       </Card.Body>
+      <Card.Footer>
+      <Card.Text>Days you want to borrow for </Card.Text>
+
+        <form onSubmit={this.makeRequest}>
+    
+          <InputGroup className="mb-3">
+            
+          <FormControl
+            name='return_by'
+            aria-describedby="basic-addon2"/>
+          
+          <FormControl 
+            type='hidden'
+            name='item_id'
+            value={ (this.state.item != null) ? this.state.item.id : null }/>
+          <InputGroup.Append>
+            <Button variant="outline-secondary" type="submit">Request Item</Button>
+          </InputGroup.Append>
+          </InputGroup>
+        </form>
+      </Card.Footer>
     </Card>
+    </div>
     </div>
     );
   }

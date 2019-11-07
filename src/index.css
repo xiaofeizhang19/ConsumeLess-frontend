@@ -39,8 +39,6 @@ body {
   }
   .SingleCard {
     height: auto;
-    max-height: 70%;
-    width: auto;
-    max-width: 40%;
+    width: 500px;
     margin: auto
   }
