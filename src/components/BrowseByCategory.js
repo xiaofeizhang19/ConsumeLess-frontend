@@ -14,7 +14,6 @@ class BrowseByCategory extends Component {
           method: 'GET',
       })
           .then(items => {
-          console.log(items)
           this.setState({items: items})
           return Promise.resolve(items);
           })
@@ -36,7 +35,6 @@ class BrowseByCategory extends Component {
   }
 
   render(){
-    console.log(this.state.items)
     const { items, category, categories } = this.state;
     return (
       <div>

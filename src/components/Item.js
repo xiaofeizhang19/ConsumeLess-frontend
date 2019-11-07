@@ -10,7 +10,7 @@ class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: null
+      item: {}
     };
     this.Auth = new AuthService();
     this.makeRequest = this.makeRequest.bind(this);
@@ -32,7 +32,6 @@ class Item extends Component {
    }
 
 render() {
-    console.log(this.state)
     return (
       <Card style={{flex:1}} border="primary" bg ="info" className="card mb-4">
       <Card.Header>Name: { (this.state.item != undefined) ? this.state.item.name : null }</Card.Header>
