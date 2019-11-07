@@ -2,20 +2,35 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 import { useHistory, withRouter } from 'react-router-dom';
 import AuthService from './AuthService';
-const Auth = new AuthService();
+import getData from "../actions/getData";
+import { URLs } from '../constants/URLs';
+const Auth = new AuthService(); 
 
 export default class Navigation extends Component {
+  state = {
+    user: {
+      username: ""
+    },
+    navigate: false
+  }
 
-  handleLogout = (event) => {
-    event.preventDefault();
-
-    Auth.logout();
-    this.props.history.replace('/');
+  async componentDidMount() {
+    const userId = Auth.getProfile().user_id;
+    const user = await getData(URLs.user + `${userId}`);
+    this.setState({ user });
   }
 
   render() {
+    const { navigate } = this.state;
+    if ( navigate ) {
+      localStorage.removeItem('id_token');
+      return <Redirect to="/" push={true} />
+    }
+    const { username } = this.state.user;
+    console.log(username)
     return (
       <div>
         <Navbar collapseOnSelect expand="lg" variant="dark" className="Navigation">
@@ -27,12 +42,15 @@ export default class Navigation extends Component {
               <LinkContainer to="/items">
                 <Nav.Link eventKey={1}>Home</Nav.Link>
               </LinkContainer>
-                <NavDropdown title="User" id="collasible-nav-dropdown">
-                  <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
+              <LinkContainer to="/categories">
+                <Nav.Link eventKey={2}>Categories</Nav.Link>
+              </LinkContainer>
+                <NavDropdown title={ username } id="collasible-nav-dropdown">
                   <NavDropdown.Item href="/items/new">Add New Item</NavDropdown.Item>
+                  <NavDropdown.Item href="/profile">Profile</NavDropdown.Item>
                   <NavDropdown.Item href="#">Settings</NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item>Log out</NavDropdown.Item>
+                  <NavDropdown.Item onClick={() => this.setState({ navigate: true })}>Log out</NavDropdown.Item>
                 </NavDropdown>
             </Nav>
         </Navbar.Collapse>
