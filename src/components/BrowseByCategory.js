@@ -40,7 +40,7 @@ class BrowseByCategory extends Component {
     const { items, category, categories } = this.state;
     return (
       <div>
-      <Navigation/>
+      <Navigation/><br></br>
       <div>
       <Carousel categories={categories} category={category} changeCategory={this.changeCategory}/>
       </div>
