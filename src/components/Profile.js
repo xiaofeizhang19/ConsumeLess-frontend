@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Table from 'react-bootstrap/Table';
 import AuthService from './AuthService';
 import Navigation from './Navigation';
-import getData from "../actions/getData"
-import { URLs } from '../constants/URLs'
+import getData from "../actions/getData";
+import { URLs } from '../constants/URLs';
+import ItemsTable from './ItemsTable';
 
 import Card from 'react-bootstrap/Card'
 import Accordion from 'react-bootstrap/Accordion'
@@ -25,11 +25,10 @@ export default class Profile extends Component {
         email: "",
         created_at: "",
       },
-      // itemsOwn: {
-      //   name: "",
-      //   category: "",
-      //   description: "",
-      // }
+      itemsOwn: [],
+      itemsBorrowed: [],
+      itemsLent: [],
+      bookingRequests: []
     }
     this.Auth = new AuthService();
   }
@@ -37,14 +36,24 @@ export default class Profile extends Component {
   async componentDidMount() {
     const userId = this.Auth.getProfile().user_id;
     const user = await getData(URLs.user + `${userId}`);
-
-    // const itemsOwn = await getData(URLs.itemsOwn);
-    // console.log(itemsOwn);
     this.setState({ user });
+
+    const token = this.Auth.getToken();
+    const itemsOwn = await getData(URLs.itemsOwn + `?token=${token}`);
+    this.setState({ itemsOwn });
+
+    // const itemsBorrowed = await getData(URLs.itemsBorrowed + `?token=${token)}`);
+    // this.setState({ itemsBorrowed });
+
+    const itemsLent = await getData(URLs.itemsLent + `?token=${token}`);
+    this.setState({ itemsLent });
+
+    const bookingRequests = await getData(URLs.bookingRequests + `?token=${token}`);
+    this.setState({ bookingRequests });
   }
 
   render() {
-    const { user } = this.state;
+    const { user, itemsOwn } = this.state;
     return (
       <div><Navigation />
         <Jumbotron variant="primary">
@@ -82,7 +91,7 @@ export default class Profile extends Component {
                         <MdGrade />
                         <MdGrade />
                       </ListGroupItem>
-                      <ListGroupItem>Member since: {user.created_at}</ListGroupItem>
+                      <ListGroupItem>Member since: {this.state.user.created_at}</ListGroupItem>
                     </ListGroup>
                 </Card>
               </Col>
@@ -94,10 +103,10 @@ export default class Profile extends Component {
           <Accordion>
           <Card>
               <Accordion.Toggle as={Card.Header} eventKey="0" className="profileItems">
-                Items I Own
+                Items I own
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
-                <Card.Body><ItemsOwn /></Card.Body>
+                <Card.Body><ItemsTable tableData={this.state.itemsOwn} /></Card.Body>
               </Accordion.Collapse>
             </Card>
             <Card>
@@ -105,7 +114,7 @@ export default class Profile extends Component {
                 Items I have Borrowed
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
-                <Card.Body><ItemsBorrowed /></Card.Body>
+                <Card.Body><ItemsTable tableData={this.state.itemsBorrowed} /></Card.Body>
               </Accordion.Collapse>
             </Card>
             <Card>
@@ -113,68 +122,20 @@ export default class Profile extends Component {
                 Items I am lending out
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
-                <Card.Body><ItemsLent /></Card.Body>
+                <Card.Body><ItemsTable tableData={this.state.itemsLent} /></Card.Body>
               </Accordion.Collapse>
+              <Card>
+              <Accordion.Toggle as={Card.Header} eventKey="1" className="profileItems">
+                Booking Requests
+              </Accordion.Toggle>
+              <Accordion.Collapse eventKey="1">
+                <Card.Body><ItemsTable tableData={this.state.bookingRequests} /></Card.Body>
+              </Accordion.Collapse>
+            </Card>
             </Card>
           </Accordion>
         </Container>
       </div>
     )  
   }  
-}
-
-const ItemsOwn = () => {
-  return (
-    <div className="container">
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Description</th>
-            <th>Category</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Nintendo Switch</td>
-            <td>Amazing game</td>
-            <td>Game</td>
-            <td>Available</td>
-          </tr>
-        </tbody>
-      </Table>
-    </div>
-  )
-}
-
-const ItemsBorrowed = () => {
-  return (
-    <div className="container">
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Description</th>
-            <th>Borrowed From</th>
-            <th>Return Date</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>GoT</td>
-            <td>Book</td>
-            <td>Otto</td>
-            <td>01/12/2019</td>
-          </tr>
-        </tbody>
-      </Table>
-    </div>
-  )
-}
-
-const ItemsLent = () => {
-  return (
-    <p>Items I am lending out</p>
-  )
 }
