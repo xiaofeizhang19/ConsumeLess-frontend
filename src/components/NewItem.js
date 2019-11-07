@@ -14,11 +14,28 @@ import Container from '@material-ui/core/Container';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import TextField from '@material-ui/core/TextField';
 import InputLabel from '@material-ui/core/InputLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
+
+const CssMultiLineTextField = withStyles({
+  root: {
+    '& label.Mui-focused': {
+      color: '#659c35',
+    },
+    '& .MuiInput-underline:after': {
+      borderBottomColor: '#659c35'
+    },
+    '& .MuiOutlinedInput-root': {
+      '&.Mui-focused fieldset': {
+        borderColor: '#659c35'
+      }
+    }
+  },
+})(TextField);
 
 const CssTextField = withStyles({
   root: {
@@ -83,7 +100,7 @@ export default function Register() {
   const [name, setItemname] = useState('');
   const [description, setDescription] = useState('');
   const [category, setCategory] = useState('');
-  const [overdueCharge, setOverdueCharge] = useState('');
+  const [overdueCharge, setOverdueCharge] = useState(null);
   const [deposit, setDeposit] = useState('');
   const [open, setOpen] = React.useState(false);
   const inputLabel = React.useRef(category);
@@ -104,8 +121,25 @@ export default function Register() {
   }
 
   const handleCategory = event => {
+    console.log(event.target.value);
     setCategory(event.target.value);
   };
+
+  const filterNonNumber = (event) => {
+    const {value} = event.target;
+    
+    if(value=="") {
+      handleOverdueCharge(null);
+    }
+
+    const floatValue = parseFloat(value);
+    if (floatValue) {
+      handleOverdueCharge(floatValue);
+    }
+  
+    return null;
+  }
+  
 
   const handleItemName = event => {
     setItemname(event.target.value);
@@ -115,8 +149,8 @@ export default function Register() {
     setDescription(event.target.value);
   };
 
-  const handleOverdueCharge = event => {
-    setOverdueCharge(event.target.value);
+  const handleOverdueCharge = value => {
+    setOverdueCharge(value);
   };
 
   const handleDeposit = event => {
@@ -126,6 +160,7 @@ export default function Register() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    console.log(event.target)
     let payload = new FormData(event.target)
 
     authService.register(payload)
@@ -159,8 +194,8 @@ export default function Register() {
               <FormControl variant="outlined" className={classes.form}>
               <InputLabel ref={inputLabel} id="demo-simple-select-outlined-label">Category</InputLabel>
               <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined-label"
+                id="category"
+                name="category"
                 value={category}
                 onChange={handleCategory}
                 labelWidth={labelWidth}
@@ -173,12 +208,14 @@ export default function Register() {
               <MenuItem value='equipment'>Garden/Building equipment</MenuItem>
               </Select>
               </FormControl>
-              <CssTextField
+              <CssMultiLineTextField
                 className={classes.input}
                 variant="outlined"
                 margin="normal"
                 required
-                fullWidth
+                multiline
+                rowsMax="3"
+                rows="3"
                 type="text"
                 id="description"
                 label="Description"
@@ -199,7 +236,7 @@ export default function Register() {
                 label="Overdue charge per day"
                 name="overdue_charge"
                 value={overdueCharge}
-                onChange={handleOverdueCharge}
+                onChange={filterNonNumber}
               />
               <CssTextField
                 className={classes.input}
