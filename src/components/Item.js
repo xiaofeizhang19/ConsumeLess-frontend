@@ -20,10 +20,8 @@ class Item extends Component {
   }
 
   makeRequest(event) {
-    console.log(event)
     event.preventDefault();
     const payload = new FormData(event.target)
-    console.log(payload)
 
     this.Auth.bookItem(payload)
       .then(res => this.props.history.replace('/categories'))

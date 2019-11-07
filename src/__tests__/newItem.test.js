@@ -4,6 +4,7 @@ import { configure } from 'enzyme';
 import { shallow } from 'enzyme';
 import NewItem from '../components/NewItem';
 import Adapter from 'enzyme-adapter-react-16';
+import { useHistory } from 'react';
 
 configure({ adapter: new Adapter() });
 
