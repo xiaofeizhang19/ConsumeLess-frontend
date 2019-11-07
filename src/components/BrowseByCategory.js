@@ -3,14 +3,11 @@ import getData from "../actions/getData"
 import { URLs } from '../constants/URLs';
 import Carousel from './Carousel';
 import MapContainer from "./Map";
-import Navigation from './Navigation'
-import AuthService from './AuthService'
-
+import Navigation from './Navigation';
 
 class BrowseByCategory extends Component {
   constructor(props) {
     super(props);
-    this.Auth = new AuthService()
     this.updateItems = (category) => {
       let items
       return items = getData(URLs.category + `${category}`, {
@@ -23,7 +20,7 @@ class BrowseByCategory extends Component {
           })
     }
     this.state = { items: [],
-                   category: 'books',
+                   category: null,
                    categories: ['books', 'clothes', 'games', 'music', 'garden', 'toys']
                   };
   }
