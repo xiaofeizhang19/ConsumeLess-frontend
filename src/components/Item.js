@@ -2,15 +2,17 @@ import React, { Component } from "react";
 import { Route } from 'react-router-dom';
 import getData from "../actions/getData";
 import { URLs } from '../constants/URLs';
+import { CategoryPics } from '../constants/CategoryPics';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import AuthService from './AuthService';
+import Link from '@material-ui/core/Link';
 
 class Item extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      item: {}
+      item: {},
     };
     this.Auth = new AuthService();
     this.makeRequest = this.makeRequest.bind(this);
@@ -22,7 +24,7 @@ class Item extends Component {
     console.log(payload)
 
     this.Auth.bookItem(payload)
-      .then(res => this.props.history.replace('/items'))
+      .then(res => this.props.history.replace('/categories'))
       .catch(error => alert(error))
   }
 
@@ -32,10 +34,11 @@ class Item extends Component {
    }
 
 render() {
+  const category = this.state.item.category
     return (
       <Card style={{flex:1}} border="primary" bg ="info" className="card mb-4">
       <Card.Header>Name: { (this.state.item != undefined) ? this.state.item.name : null }</Card.Header>
-      <Card.Img src='https://images.unsplash.com/photo-1572715655204-47e297d3b6dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' alt =''/>
+      <Card.Img src={ CategoryPics[category] } alt =''/>
       <Card.Body>
         <Card.Title>Description: { (this.state.item != undefined) ? this.state.item.description : null }</Card.Title>
         <Card.Title>Category: { (this.state.item != undefined) ? this.state.item.category : null }</Card.Title>
@@ -50,6 +53,10 @@ render() {
           <label>Days you want to borrow for</label>
           <input name='return_by' type='number'/>
           <button>request item</button>
+          <br />
+          <Link href="/categories" variant="body2">
+            {"Back"}
+          </Link>
         </form>
       </Card.Body>
     </Card>
