@@ -55,6 +55,15 @@ export default class AuthService {
           })
     }
 
+    confirmRequest(id) {
+        return this.fetch(URLs.requestBooking + `${id}` + `?token=${this.getToken()}`, {
+            method: 'PATCH',
+        })
+            .then(res => {
+            return Promise.resolve(res);
+            })
+      }
+
     updateItems(payload) {
       return this.fetch(URLs.category + `${payload}`, {
           method: 'GET',

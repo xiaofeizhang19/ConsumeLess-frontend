@@ -4,6 +4,7 @@ import Navigation from './Navigation';
 import getData from "../actions/getData";
 import { URLs } from '../constants/URLs';
 import ItemsTable from './ItemsTable';
+import RequestTable from './RequestTable'
 
 import Card from 'react-bootstrap/Card'
 import Accordion from 'react-bootstrap/Accordion'
@@ -31,6 +32,7 @@ export default class Profile extends Component {
       bookingRequests: []
     }
     this.Auth = new AuthService();
+    this.confirmRequest = this.confirmRequest.bind(this);
   }
 
   async componentDidMount() {
@@ -52,6 +54,18 @@ export default class Profile extends Component {
 
     const bookingRequests = await getData(URLs.bookingRequests + `?token=${token}`);
     this.setState({ bookingRequests });
+  }
+
+  confirmRequest = (index, event) => {
+    console.log("I was clicked")
+    console.log(this.state.bookingRequests)
+    console.log(index)
+    let id = this.state.bookingRequests[index].id
+    console.log(id)
+  
+    this.Auth.confirmRequest(id)
+      .then(res => this.props.history.replace('/profile'))
+      .catch(error => alert(error))
   }
 
   render() {
@@ -131,7 +145,7 @@ export default class Profile extends Component {
                 Booking Requests
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
-                <Card.Body><ItemsTable tableData={this.state.bookingRequests} /></Card.Body>
+                <Card.Body><RequestTable tableData={this.state.bookingRequests} confirmRequest={this.confirmRequest}/></Card.Body>
               </Accordion.Collapse>
             </Card>
             </Card>

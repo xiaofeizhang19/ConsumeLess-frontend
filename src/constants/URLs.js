@@ -13,7 +13,7 @@ export const URLs = {
     user: "http://consumerless-backend.herokuapp.com/api/user/",
 
     requestBooking: "http://consumerless-backend.herokuapp.com/api/booking/new",
-    bookingRequests: "http://consumerless-backend.herokuapp.com/api/booking/requests"
+    bookingRequests: "http://consumerless-backend.herokuapp.com/api/booking/requests",
 
     requestBooking: "http://consumerless-backend.herokuapp.com/api/booking/new",
     confirmBooking: "http://consumerless-backend.herokuapp.com/api/booking/",
