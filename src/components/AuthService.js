@@ -62,7 +62,16 @@ export default class AuthService {
             .then(res => {
             return Promise.resolve(res);
             })
-      }
+    }
+
+    rejectRequest(id) {
+        return this.fetch(URLs.rejectBooking + `${id}` + `?token=${this.getToken()}`, {
+            method: 'DELETE',
+        })
+            .then(res => {
+            return Promise.resolve(res);
+            })
+    }
 
     updateItems(payload) {
       return this.fetch(URLs.category + `${payload}`, {

@@ -49,7 +49,7 @@ const TableBody = props => {
           <input type='hidden' name='item_id' value={ row.id } />
           <td>
             <Button onClick={() => props.confirmRequest(index)} onvariant="outline-secondary" size="sm">Confirm</Button>
-            <Button variant="outline-secondary" size="sm">Reject</Button>
+            <Button onClick={() => props.rejectRequest(index)} variant="outline-secondary" size="sm">Reject</Button>
           </td>
         </tr>
       )
