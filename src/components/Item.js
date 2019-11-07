@@ -22,7 +22,7 @@ class Item extends Component {
     console.log(payload)
 
     this.Auth.bookItem(payload)
-      .then(res => this.props.history.replace('/items'))
+      .then(res => this.props.history.replace('/categories'))
       .catch(error => alert(error))
   }
 
