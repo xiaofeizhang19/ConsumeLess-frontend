@@ -5,6 +5,9 @@ import { URLs } from '../constants/URLs';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import AuthService from './AuthService';
+import Navigation from './Navigation';
+import InputGroup from 'react-bootstrap/InputGroup';
+import FormControl from 'react-bootstrap/FormControl';
 
 class Item extends Component {
   constructor(props) {
@@ -22,7 +25,7 @@ class Item extends Component {
     console.log(payload)
 
     this.Auth.bookItem(payload)
-      .then(res => this.props.history.replace('/items'))
+      .then(res => this.props.history.replace('/categories'))
       .catch(error => alert(error))
   }
 
@@ -33,26 +36,36 @@ class Item extends Component {
 
 render() {
     return (
-      <Card style={{flex:1}} border="primary" bg ="info" className="card mb-4">
+      <div>
+      <Navigation />
+      <br/>
+      <Card style={{display: 'flex', justifyContent: 'center'}} bg ="light" className="SingleCard">
       <Card.Header>Name: { (this.state.item != undefined) ? this.state.item.name : null }</Card.Header>
       <Card.Img src='https://images.unsplash.com/photo-1572715655204-47e297d3b6dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' alt =''/>
       <Card.Body>
         <Card.Title>Description: { (this.state.item != undefined) ? this.state.item.description : null }</Card.Title>
         <Card.Title>Category: { (this.state.item != undefined) ? this.state.item.category : null }</Card.Title>
         <Card.Title>Deposit: £{ (this.state.item != undefined) ? this.state.item.deposit : null }</Card.Title>
-        <Card.Title>Overdue Charge: £{ (this.state.item != undefined) ? this.state.item.overdue_charge : null }</Card.Title>
+        <Card.Title>Daily Overdue Charge: £{ (this.state.item != undefined) ? this.state.item.overdue_charge : null }</Card.Title>
         <form onSubmit={this.makeRequest}>
-        <input
+        <InputGroup className="mb-3">
+        <Card.Title>Days you want to borrow for</Card.Title>
+        <FormControl
+        aria-label="Recipient's used"
+        aria-describedby="basic-addon2"
+        />
+        <InputGroup.Append 
           type='hidden'
           name='item_id'
           value={ (this.state.item != null) ? this.state.item.id : null }
-          />
-          <label>Days you want to borrow for</label>
-          <input name='return_by' type='number'/>
-          <button>request item</button>
+          >
+        <Button variant="outline-secondary">Request Item</Button>
+        </InputGroup.Append>
+        </InputGroup>
         </form>
       </Card.Body>
     </Card>
+    </div>
     );
   }
 }

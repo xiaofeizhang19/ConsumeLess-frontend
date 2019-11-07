@@ -37,3 +37,10 @@ body {
   .userNameTitle{
     color:purple;
   }
+  .SingleCard {
+    height: auto;
+    max-height: 70%;
+    width: auto;
+    max-width: 40%;
+    margin: auto
+  }
