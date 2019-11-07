@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { InfoWindow, Marker, Map, GoogleApiWrapper } from 'google-maps-react';
 import { URLs } from '../constants/URLs';
 import getData from "../actions/getData";
+import Button from 'react-bootstrap/Button';
 
 const mapStyles = {
   width: '100vw',
@@ -15,17 +16,20 @@ export class MapContainer extends Component {
       markers:[],
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {},
+      selectedItem: {},
       items: this.props.items
     };
     // this.catItems = this.catItems.bind(this);
   }
-  onMarkerClick = (props, marker, e) =>
+  onMarkerClick = (props, marker, e) => {
+    console.log(props);
     this.setState({
-      selectedPlace: props,
+      selectedItem: props,
       activeMarker: marker,
       showingInfoWindow: true
     });
+  }
+
 
   onClose = props => {
     if(this.state.showingInfoWindow) {
@@ -39,8 +43,9 @@ export class MapContainer extends Component {
 
   render() {
     const { items } = this.props;
+    const { activeMarker, selectedItem, showingInfoWindow } = this.state;
     this.state.items.map((item)=>{ console.log(item.longitude) })
-    console.log(items)
+    console.log(selectedItem.identifier)
     let icon = {
       url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
     }
@@ -54,18 +59,21 @@ export class MapContainer extends Component {
          lng: -0.07329
         }}
       >
-      {items.map((item, i) => {
+      {items.map((item) => {
         return (
-          <Marker name={ item.name } position={{lat: item.latitude, lng: item.longitude}} key={i} />
+          <Marker onClick={this.onMarkerClick} name={ `${item.name}` } position={{lat: item.latitude, lng: item.longitude}} identifier={`${item.id}`} key={`${item.id}`}/>
         )
       })}
-        <InfoWindow
-          marker={this.state.activeMarker}
-          visible={this.state.showingInfoWindow}
-          onClose={this.onClose}
-        >
-          <div><h4>Nearly</h4></div>
-        </InfoWindow>
+      {selectedItem && (<InfoWindow
+        marker={activeMarker}
+        visible={showingInfoWindow}
+        onClose={this.onClose}
+      >
+        <div>
+          <h4>{selectedItem.name}</h4>
+          <Button href={`/item/${selectedItem.identifier}`}> View Item </Button>
+        </div>
+      </InfoWindow>)}
       </Map>
     );
   }
