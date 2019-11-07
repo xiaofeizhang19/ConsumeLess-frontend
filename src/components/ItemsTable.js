@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Table from 'react-bootstrap/Table';
+import Button from 'react-bootstrap/Button';
 
 export default class ItemsTable extends Component {
   render() {
@@ -25,6 +26,7 @@ const TableHeader = () => {
         <th>Category</th>
         <th>Overdue Charge</th>
         <th>Deposit</th>
+        <th>Action</th>
       </tr>
     </thead>
   )
@@ -42,6 +44,9 @@ const TableBody = props => {
           <td>{row.category}</td>
           <td>{row.overdue_charge}</td>
           <td>{row.deposit}</td>
+          <div class="col text-center">
+            <Button variant="outline-secondary" size="sm">Update</Button>
+          </div>
         </tr>
       )
     })
