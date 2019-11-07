@@ -99,7 +99,7 @@ export default function Login() {
     let payload = new FormData(event.target)
 
     authService.login(payload)
-      .then(res => history.replace('/items'))
+      .then(res => history.replace('/categories'))
       .catch(error => handleClickOpen())
   };
 

@@ -126,7 +126,7 @@ export default function Register() {
       let payload = new FormData(event.target)
   
       authService.register(payload)
-        .then(res => history.replace('/items'))
+        .then(res => history.replace('/categories'))
         .catch(error => handleClickOpen())
     };
 
