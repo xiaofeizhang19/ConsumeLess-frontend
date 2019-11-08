@@ -37,3 +37,7 @@ body {
   .userNameTitle{
     color:purple;
   }
+  .cardsize{
+    height: 100%;
+    padding: 10px;
+  }
