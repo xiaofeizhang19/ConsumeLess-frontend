@@ -33,7 +33,7 @@ class Item extends Component {
 
 render() {
     return (
-      <Card style={{flex:1}} border="primary" bg ="info" className="card mb-4">
+      <Card style={{flex:1}} border="primary" bg ="light" className="card mb-4">
       <Card.Header>Name: { (this.state.item != undefined) ? this.state.item.name : null }</Card.Header>
       <Card.Img src='https://images.unsplash.com/photo-1572715655204-47e297d3b6dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60' alt =''/>
       <Card.Body>
