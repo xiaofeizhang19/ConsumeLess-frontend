@@ -15,17 +15,7 @@ export default class Carousel extends Component {
         category: this.props.category,
 
       };
-    }
-    //
-    // async getItemsByCategory(event) {
-    //   const category = await (window.location.href).split("#")[1]
-    //   this.setState({ category: category})
-    // }
-
-    // async componentDidMount() {
-    //   const category = await (window.location.href).split("#")[1];
-    //   this.setState({ category: category })
-    // }
+    };
 
     render() {
       const { changeCategory, categories} = this.props;
