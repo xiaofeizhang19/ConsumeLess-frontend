@@ -91,7 +91,7 @@ export default class Profile extends Component {
                   </Card.Body>
                   <ListGroup className="list-group-flush">
                     <ListGroupItem className="iconEmail"><MdEmail />  {user.email}</ListGroupItem>
-                    <ListGroupItem className="iconLocation"><MdLocationOn / >  London</ListGroupItem>
+                    <ListGroupItem className="iconLocation"><MdLocationOn / >  {user.postcode}</ListGroupItem>
                   </ListGroup>
                 </Card>
               </Col>

@@ -10,6 +10,7 @@ import Link from '@material-ui/core/Link';
 import Navigation from './Navigation';
 import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
+import Link from '@material-ui/core/Link';
 
 class Item extends Component {
   constructor(props) {
@@ -43,7 +44,6 @@ render() {
       <div style={{padding:40}}>
       <Card style={{display: 'flex', justifyContent: 'center'}} bg ="light" className="SingleCard">
       <Card.Img height="250" src={ CategoryPics[category] } alt =''/>
-
       <Card.Body>
         <Card.Title>{ (this.state.item != undefined) ? this.state.item.name : null } - { (this.state.item != undefined) ? this.state.item.category : null }</Card.Title>
         <Card.Subtitle className="mb-2 text-muted">Deposit: £{ (this.state.item != undefined) ? this.state.item.deposit : null } - Daily Overdue Charge: £{ (this.state.item != undefined) ? this.state.item.overdue_charge : null }</Card.Subtitle>
@@ -60,8 +60,8 @@ render() {
       <Card.Text>Days you want to borrow for </Card.Text>
 
         <form onSubmit={this.makeRequest}>
-    
-          <InputGroup className="mb-3">
+
+        <InputGroup className="mb-3">
             
           <FormControl
             name='return_by'
