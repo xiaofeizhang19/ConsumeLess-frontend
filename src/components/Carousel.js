@@ -91,7 +91,6 @@ export default class Carousel extends Component {
   <Card.Header bg="info"> <Card.Title>Music</Card.Title></Card.Header>
   <Card.Img variant="top" src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" />
     <br/>
-    <br/>
     <Card.Text className="text-center">
       Tired of peace and quiet and need a drumset for your child? Click here
     </Card.Text>
