@@ -5,8 +5,9 @@ import getData from "../actions/getData";
 import Button from 'react-bootstrap/Button';
 
 const mapStyles = {
-  width: '100vw',
-  height: '60vh'
+  width: 'auto',
+  maxWidth:'100%',
+  height:'80vh'
 };
 
 export class MapContainer extends Component {
@@ -50,6 +51,7 @@ export class MapContainer extends Component {
       url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
     }
     return (
+      <div className="map">
       <Map
         google={this.props.google}
         zoom={12}
@@ -75,6 +77,7 @@ export class MapContainer extends Component {
         </div>
       </InfoWindow>)}
       </Map>
+      </div>
     );
   }
 }

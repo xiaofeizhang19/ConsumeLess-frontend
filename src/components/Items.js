@@ -23,8 +23,8 @@ class Items extends Component {
   }
 
   render(){
-    console.log(this.state.items)
-    console.log("i'm running 1")
+    
+  
     return (
       <div><Navigation />
       <div className="col-md-6 col-lg-4">

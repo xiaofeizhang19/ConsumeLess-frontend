@@ -39,11 +39,11 @@ class BrowseByCategory extends Component {
     return (
       <div>
       <Navigation/>
-      <div>
+      <div  style={{padding:30}}>
       <Carousel categories={categories} category={category} changeCategory={this.changeCategory}/>
       </div>
       <div>
-      <MapContainer items={items}/>
+          <MapContainer items={items}/>
       </div>
       </div>
     )}
