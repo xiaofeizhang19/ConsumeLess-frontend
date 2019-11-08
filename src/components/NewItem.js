@@ -33,7 +33,7 @@ export default class NewItem extends Component {
     const payload = new FormData(event.target);
 
     this.Auth.newItem(payload)
-      .then(res => this.props.history.replace('/items'))
+      .then(res => this.props.history.replace('/categories'))
       .catch(error => alert(error))
   }
 

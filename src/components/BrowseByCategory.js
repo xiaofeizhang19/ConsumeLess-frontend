@@ -20,7 +20,7 @@ class BrowseByCategory extends Component {
     }
     this.state = { items: [],
                    category: null,
-                   categories: ['books', 'clothes', 'games', 'music', 'garden', 'toys']
+                   categories: ['books', 'clothes', 'games', 'music', 'equitment', 'toys']
                   };
   }
 
