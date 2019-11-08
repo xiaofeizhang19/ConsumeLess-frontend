@@ -11,10 +11,7 @@ export const URLs = {
     login: "http://consumerless-backend.herokuapp.com/login",
     register: "http://consumerless-backend.herokuapp.com/api/user/new",
     user: "http://consumerless-backend.herokuapp.com/api/user/",
-
-    requestBooking: "http://consumerless-backend.herokuapp.com/api/booking/new",
-    bookingRequests: "http://consumerless-backend.herokuapp.com/api/booking/requests",
-
+    
     requestBooking: "http://consumerless-backend.herokuapp.com/api/booking/new",
     confirmBooking: "http://consumerless-backend.herokuapp.com/api/booking/",
     rejectBooking: "http://consumerless-backend.herokuapp.com/api/booking/",

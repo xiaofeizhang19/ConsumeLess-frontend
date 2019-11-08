@@ -5,6 +5,8 @@ import getData from "../actions/getData";
 import { URLs } from '../constants/URLs';
 import ItemsTable from './ItemsTable';
 import RequestTable from './RequestTable'
+import BorrowedTable from './BorrowedTable'
+import LentOutTable from './LentOutTable'
 
 import Card from 'react-bootstrap/Card'
 import Accordion from 'react-bootstrap/Accordion'
@@ -20,7 +22,7 @@ import { MdGrade, MdEmail, MdLocationOn, MdAccountCircle } from 'react-icons/md'
 export default class Profile extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       user: {
         username: "",
         email: "",
@@ -95,7 +97,7 @@ export default class Profile extends Component {
                     roundedCircle />
                 </Card>
               </Col>
-    
+
               <Col xs={6} md={4}>
                 <Card style={{ width: '18rem' }}  border="secondary">
                   <Card.Body>
@@ -132,7 +134,7 @@ export default class Profile extends Component {
                 Items I have Borrowed
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="0">
-                <Card.Body><ItemsTable tableData={this.state.itemsBorrowed} /></Card.Body>
+                <Card.Body><BorrowedTable tableData={this.state.itemsBorrowed} /></Card.Body>
               </Accordion.Collapse>
             </Card>
             <Card>
@@ -140,7 +142,7 @@ export default class Profile extends Component {
                 Items I am lending out
               </Accordion.Toggle>
               <Accordion.Collapse eventKey="1">
-                <Card.Body><ItemsTable tableData={this.state.itemsLent} /></Card.Body>
+                <Card.Body><LentOutTable tableData={this.state.itemsLent} /></Card.Body>
               </Accordion.Collapse>
               <Card>
               <Accordion.Toggle as={Card.Header} eventKey="1" className="profileItems">
@@ -154,6 +156,6 @@ export default class Profile extends Component {
           </Accordion>
         </Container>
       </div>
-    )  
-  }  
+    )
+  }
 }
