@@ -1,14 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-## Deployed on Server
-https://infinite-waters-48339.herokuapp.com/
+## Introduction
+For our final group project at Makers Academy, we decided to make a web application that allows people to borrow/lend less frequently used items to each other, thus reduce unecessary consumption and carbon footprint.
+
+The backend was built in Python and Flask, and the frontend was built in React.
+
+The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and deployed on [heroku](https://infinite-waters-48339.herokuapp.com/).
 
 ## Running Cypress Tests
 OPen up cypress console for running the tests by typing `./node_modules/.bin/cypress open` in the console.
 
 ## JEST coverage
 run the following code:
-
+```
 npm t -- --coverage --watchAll=false
+```
 ## Available Scripts
 
 In the project directory, you can run:
@@ -18,7 +22,7 @@ In the project directory, you can run:
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
+The page will reload after modification.<br />
 You will also see any lint errors in the console.
 
 ### `yarn test`
