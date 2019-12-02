@@ -1,9 +1,10 @@
 ## Introduction
-For our final group project at Makers Academy, we decided to make a web application that allows people to borrow/lend less frequently used items to each other, thus reduce unecessary consumption and carbon footprint.
 
-The backend was built in Python and Flask, and the frontend was built in React.
+This application aims to encourage reuse of little used items in order to reduce consumption and help our users to reduce their carbon footprint.<br />
 
-The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app) and deployed on [heroku](https://infinite-waters-48339.herokuapp.com/).
+The [backend](https://github.com/xiaofeizhang19/ConsumeLess-backend) has been built in Python and Flask, and the frontend has been built in React.<br />
+
+The project has been deployed on [heroku](https://infinite-waters-48339.herokuapp.com/).
 
 ## Running Cypress Tests
 OPen up cypress console for running the tests by typing `./node_modules/.bin/cypress open` in the console.
@@ -50,33 +51,3 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `yarn build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
-# ConsumeLess-frontend
