@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/xiaofeizhang19/ConsumeLess-frontend.svg?style=svg)](https://circleci.com/gh/xiaofeizhang19/ConsumeLess-frontend)
+
 ## Introduction
 
 This application aims to encourage reuse of little used items in order to reduce consumption and help our users to reduce their carbon footprint.<br />
