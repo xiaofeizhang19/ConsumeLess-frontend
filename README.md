@@ -6,9 +6,17 @@ The [backend](https://github.com/xiaofeizhang19/ConsumeLess-backend) has been bu
 
 The project has been deployed on [heroku](https://infinite-waters-48339.herokuapp.com/).
 
-Register:
+Login page:
+![Login](/public/login.png)
+
+Register page:
 ![Register](/public/register.png)
-Format: ![Alt Text](url)
+
+Main page:
+![Main](/public/main.png)
+
+User profile:
+![Profile](/public/profile.png)
 
 ## Running Cypress Tests
 OPen up cypress console for running the tests by typing `./node_modules/.bin/cypress open` in the console.
