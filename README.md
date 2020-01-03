@@ -2,7 +2,7 @@
 
 ## Introduction
 
-This application aims to encourage reuse of little used items in order to reduce consumption and help our users to reduce their carbon footprint. Items added will appear on the map based on the owner's post code, allowing users to browse items and borrow those close to their own location. Users can manage the items they own, borrowed and lent out in their profile page.<br />
+This is a web application that aims to encourage reuse of little used items in order to reduce consumption and help our users to reduce their carbon footprint. Items added will appear on the map based on the owner's post code, allowing users to browse items and borrow those close to their own location. Users can manage the items they own, borrowed and lent out in their profile page.<br />
 
 The [backend](https://github.com/xiaofeizhang19/ConsumeLess-backend) has been built in Python and Flask, and the frontend has been built in React.<br />
 
